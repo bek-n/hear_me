@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+import '../home/general_page.dart';
 import '../home/home_page.dart';
 
 class CongratsPage extends StatefulWidget {
@@ -22,7 +23,7 @@ class _CongratsPageState extends State<CongratsPage> {
     Future.delayed(Duration(seconds: 4), () {
       isLoading = false;
       Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: ((context) => HomePage())),
+          MaterialPageRoute(builder: ((context) => GeneralPage())),
           (route) => false);
     });
     super.initState();

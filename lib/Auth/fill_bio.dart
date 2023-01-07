@@ -680,35 +680,37 @@ class _FillBioState extends State<FillBio> {
                         image: imagePath,
                         nickName: newuser.nickName,
                         phoneNumber: newuser.phoneNumber);
-
-                    locall.setUser(user);
-                    if (fullname.text.isNotEmpty &&
-                      nickname.text.isNotEmpty &&
-                      phonenumber.text.isNotEmpty &&
-                      address.text.isNotEmpty) {
-                    UserModel user = UserModel(
-                        adress: address.text,
-                        fullName: fullname.text,
-                        nickName: nickname.text,
-                        phoneNumber: phonenumber.text,
-                        image: imagePath);
-
-                    SharedPreferences local =
-                        await SharedPreferences.getInstance();
-                    local.setString('user', jsonEncode(user.toJson()));
-
-                    String userLocal = local.getString('user') ?? '';
-                    UserModel newUser =
-                        UserModel.fromJson(jsonDecode(userLocal));
                         
+                        locall.setUser(user);
 
-                    // SharedPreferences _store =
-                    //     await SharedPreferences.getInstance();
-                    // _store.setString('nickname', nickname.text);
 
-                    Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => CongratsPage())));
-                  }
+
+                    if (fullname.text.isNotEmpty &&
+                        nickname.text.isNotEmpty &&
+                        phonenumber.text.isNotEmpty &&
+                        address.text.isNotEmpty) {
+                      UserModel user = UserModel(
+                          adress: address.text,
+                          fullName: fullname.text,
+                          nickName: nickname.text,
+                          phoneNumber: phonenumber.text,
+                          image: imagePath);
+
+                      SharedPreferences local =
+                          await SharedPreferences.getInstance();
+                      local.setString('user', jsonEncode(user.toJson()));
+
+                      String userLocal = local.getString('user') ?? '';
+                      UserModel newUser =
+                          UserModel.fromJson(jsonDecode(userLocal));
+
+                      // SharedPreferences _store =
+                      //     await SharedPreferences.getInstance();
+                      // _store.setString('nickname', nickname.text);
+
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: ((context) => CongratsPage())));
+                    }
                   }
                   if (fullname.text.isEmpty) {
                     isFullNameEmpty = true;
@@ -723,7 +725,6 @@ class _FillBioState extends State<FillBio> {
                     isAddressEmpty = true;
                     setState(() {});
                   }
-                  
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),

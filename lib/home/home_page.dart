@@ -15,7 +15,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   String name = '';
   String imagepath = '';
-  int currentIndex = 0;
 
   Future<void> getInfo() async {
     SharedPreferences _local = await SharedPreferences.getInstance();

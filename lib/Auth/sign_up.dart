@@ -6,6 +6,7 @@ import 'package:hear_me/Auth/sign_in_page.dart';
 import '../model/model_start_page.dart';
 import 'fill_bio.dart';
 
+
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
@@ -156,8 +157,8 @@ class _SignUpPageState extends State<SignUpPage> {
                   } else if (passw.text.isEmpty) {
                     isPasswordEmpty = true;
                   } else if (email.text.isNotEmpty && passw.text.isNotEmpty) {
-                    Navigator.of(context).push(
-                        MaterialPageRoute(builder: ((context) => FillBio())));
+                    Navigator.of(context).push(MaterialPageRoute(
+                        builder: ((context) => FillBio())));
                   }
                   setState(() {});
                 },
