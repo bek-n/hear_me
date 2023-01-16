@@ -32,18 +32,17 @@ class _SplashScreenState extends State<SplashScreen> {
        SharedPreferences _store = await SharedPreferences.getInstance();
       String name = _store.getString('nickname') ?? '';
 
-      if (name.isEmpty) {
-        Navigator.of(context)
-            .push(MaterialPageRoute(builder: ((context) => StartPage())));
+      if (name.isNotEmpty) {
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (_) => GeneralPage()), (s) {
+          return false;
+        });
       } else {
         Navigator.of(context).pushAndRemoveUntil(
-            MaterialPageRoute(builder: ((context) => GeneralPage())),
-            (route) => false);
+            MaterialPageRoute(builder: (_) => OnBoardingPage()), (s) {
+          return false;
+        });
       }
-
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: ((context) => OnBoardingPage())),
-          (route) => false);
     });
     super.initState();
   }

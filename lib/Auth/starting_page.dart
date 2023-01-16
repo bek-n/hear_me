@@ -12,8 +12,6 @@ class StartPage extends StatefulWidget {
 }
 
 class _StartPageState extends State<StartPage> {
- 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +19,7 @@ class _StartPageState extends State<StartPage> {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

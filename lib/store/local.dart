@@ -1,7 +1,7 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class LocalStore{
-   LocalStore._();
+abstract class LocalStorrre{
+   LocalStorrre._();
 
 
     static setTheme(bool isLight) async {

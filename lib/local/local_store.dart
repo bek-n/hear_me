@@ -3,19 +3,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model/user_model.dart';
 
-class LocalStore {
-  Future<void> setUser(UserModel userModel) async {
-    SharedPreferences store = await SharedPreferences.getInstance();
-    store.setString('user', jsonEncode(userModel.toJson()));
+class LocalStore{
+  Future<void> setUser(UserModel user) async {
+      SharedPreferences local= await SharedPreferences.getInstance();
+    local.setString("user", jsonEncode(user.toJson()));
   }
-
   Future<UserModel> getUser() async {
-    SharedPreferences store = await SharedPreferences.getInstance();
-    String? userJson = store.getString('user');
-    UserModel user = UserModel.fromJson(jsonDecode(userJson ?? ""));
-    return user;
+    SharedPreferences local= await SharedPreferences.getInstance();
+    String userLocal =local.getString("user")?? "";
+    UserModel newUser =UserModel.fromJson(jsonDecode(userLocal));
+    return newUser;
   }
-
-
-
 }

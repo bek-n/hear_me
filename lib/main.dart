@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hear_me/store/local.dart';
 import 'package:hear_me/style/style.dart';
 
+import 'home/on_boarding_page.dart';
 import 'home/splash_screen.dart';
 
 void main() {
@@ -29,7 +30,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   getTheme() async {
-    isChangeTheme = await LocalStore.getTheme();
+    isChangeTheme = await LocalStorrre.getTheme();
 
     setState(() {});
   }
@@ -50,7 +51,6 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             themeMode: isChangeTheme ? ThemeMode.light : ThemeMode.dark,
             theme: ThemeData(
-              
               scaffoldBackgroundColor: Style.whiteColor,
               appBarTheme: AppBarTheme(
                 backgroundColor: Style.primaryColor,
@@ -100,7 +100,7 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
             ),
-            home: const SplashScreen(),
+            home: const OnBoardingPage(),
           );
         }));
   }

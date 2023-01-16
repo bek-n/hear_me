@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   Future<void> getInfo() async {
     SharedPreferences _local = await SharedPreferences.getInstance();
     name = _local.getString('nickname') ?? '';
-    imagepath = _local.getString('image') ?? '';
+   
     setState(() {});
   }
 

@@ -56,7 +56,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 fontSize: 40)),
                       ])),
                 ),
-                50.verticalSpace,
+                Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 24,
