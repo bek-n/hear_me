@@ -65,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen> {
               16.horizontalSpace,
               Text(
                 'Hearme',
-                style: TextStyle(fontSize: 48),
+                style:Theme.of(context).textTheme.headline1,
               )
             ],
           ),

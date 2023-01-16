@@ -9,6 +9,7 @@ class Style {
   static const whiteColor = Colors.white;
   static const blackColor = Color(0xff181A20);
   static const bgcolorOfApp = Color(0xff181A20);
+  
 
   // ---------- Gradient   ---------- //
 
