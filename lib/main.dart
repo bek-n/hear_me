@@ -91,16 +91,16 @@ class _MyAppState extends State<MyApp> {
                       color: Style.whiteColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w400)),
-              scaffoldBackgroundColor: Style.darkModeColor,
+              scaffoldBackgroundColor: Style.bgcolorOfApp,
               appBarTheme: AppBarTheme(
-                backgroundColor: Style.primaryColor,
+                backgroundColor: Style.bgcolorOfApp,
                 titleTextStyle: Style.textStyleNormal(
                   textColor: Style.whiteColor,
                   size: 24,
                 ),
               ),
             ),
-            home: const OnBoardingPage(),
+            home: const SplashScreen(),
           );
         }));
   }

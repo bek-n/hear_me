@@ -14,12 +14,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   String name = '';
-  String imagepath = '';
 
   Future<void> getInfo() async {
     SharedPreferences _local = await SharedPreferences.getInstance();
     name = _local.getString('nickname') ?? '';
-   
+
     setState(() {});
   }
 
@@ -32,31 +31,33 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Row(
-            children: [
-              400.verticalSpace,
-              Container(
-                height: 50.r,
-                width: 50.r,
-                decoration: BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: FileImage(File(imagepath)), fit: BoxFit.cover)),
-              ),
-              24.horizontalSpace,
-              Text(
-                name,
-                style: GoogleFonts.sourceSansPro(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black),
-              ),
-            ],
-          ),
-        ],
+      appBar: AppBar(
+        title: Row(
+          children: [
+            Container(
+              height: 50.r,
+              width: 50.r,
+              decoration: BoxDecoration(
+                  color: Colors.red,
+                  shape: BoxShape.circle,
+                  image: DecorationImage(
+                      image: AssetImage(''), fit: BoxFit.cover)),
+            ),
+            10.horizontalSpace,
+            Text(
+              ' 👋 Hello $name',
+              style: GoogleFonts.sourceSansPro(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black),
+            ),
+          ],
+        ),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [],
+        ),
       ),
     );
   }
