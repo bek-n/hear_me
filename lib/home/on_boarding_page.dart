@@ -38,7 +38,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           text: 'Listen to the best music everyday with ',
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 40,
+                            fontSize: 35,
                             fontWeight: FontWeight.w700,
                           ),
                           children: <TextSpan>[
@@ -46,14 +46,14 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                             text: 'Hearme',
                             style: TextStyle(
                                 fontWeight: FontWeight.w700,
-                                fontSize: 40,
+                                fontSize: 35,
                                 color: Color(0xff06C149))),
                         TextSpan(
                             text: ' now',
                             style: TextStyle(
                                 color: Colors.black,
                                 fontWeight: FontWeight.w700,
-                                fontSize: 40)),
+                                fontSize: 35)),
                       ])),
                 ),
                 Spacer(),

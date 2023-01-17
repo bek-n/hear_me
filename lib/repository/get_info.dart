@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import '../model/artists.dart';
 import '../model/playlist.dart';
+import '../model/top200.dart';
 
 abstract class GetInfo {
   GetInfo._();
@@ -43,4 +44,24 @@ abstract class GetInfo {
     }
     return null;
   }
+
+ static Future<List<Top200?>?> getTOP() async {
+    try {
+      final url = Uri.parse("https://spotify81.p.rapidapi.com/top_200_tracks?date=2023-01-17");
+
+      final res = await http.get(url,  headers: {
+    'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+    'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
+  });
+      print(res.body);
+      print(res.statusCode);
+      print(top200FromJson(res.body));
+      return top200FromJson(res.body);
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
+
 }
