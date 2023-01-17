@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
+
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hear_me/model/artists.dart';
 import 'package:hear_me/store/local.dart';
 import 'package:hear_me/style/style.dart';
 import 'package:rolling_switch/rolling_switch.dart';
@@ -24,6 +25,7 @@ class _HomePageState extends State<HomePage>
   bool isChangedTheme = true;
   GlobalKey<ScaffoldState> key = GlobalKey();
   Playlist? lifOfPlaylists;
+  Artists? artists;
   bool isLoading = true;
 
   Future<void> getInfo() async {
@@ -31,6 +33,7 @@ class _HomePageState extends State<HomePage>
     name = _local.getString('nickname') ?? '';
     isChangedTheme = await LocalStorrre.getTheme();
     await getAllPlay();
+    await getAllArtists();
 
     setState(() {});
   }
@@ -47,6 +50,15 @@ class _HomePageState extends State<HomePage>
     setState(() {});
     lifOfPlaylists = await GetInfo.getPlaylist();
     print(lifOfPlaylists);
+    isLoading = false;
+    setState(() {});
+  }
+
+  getAllArtists() async {
+    isLoading = true;
+    setState(() {});
+    artists = await GetInfo.getArtists();
+    print(artists);
     isLoading = false;
     setState(() {});
   }
@@ -194,6 +206,34 @@ class _HomePageState extends State<HomePage>
                   ),
                 ),
               ],
+            ),
+            16.verticalSpace,
+            SizedBox(
+              height: 190,
+              child: ListView.builder(
+                  padding: EdgeInsets.only(left: 24),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: artists?.artists?.length,
+                  itemBuilder: ((context, index) => Column(
+                        children: [
+                          Container(
+                            height: 160,
+                            width: 160,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                        '${artists?.artists?[index]?.images?[index]?.url}'),
+                                    fit: BoxFit.cover),
+                                color: Colors.white,
+                                shape: BoxShape.circle),
+                          ),
+                          8.verticalSpace,
+                          Text(
+                            '${artists?.artists?[index]?.name}',
+                            style: Theme.of(context).textTheme.headline3,
+                          )
+                        ],
+                      ))),
             ),
           ],
         ));
