@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hear_me/home/playList.dart';
+import 'package:hear_me/home/playlist/playList.dart';
 import 'package:hear_me/model/artists.dart';
 import 'package:hear_me/store/local.dart';
 import 'package:hear_me/style/style.dart';
@@ -135,13 +135,15 @@ class _HomePageState extends State<HomePage>
                         fit: BoxFit.cover)),
               ),
               10.horizontalSpace,
-              Text(
-                overflow: TextOverflow.fade,
-                maxLines: 1,
-                softWrap: false,
-                ' 👋 Hello $name',
-                style: GoogleFonts.sourceSansPro(
-                  fontWeight: FontWeight.w600,
+              Expanded(
+                child: Text(
+                  overflow: TextOverflow.fade,
+                  maxLines: 1,
+                  softWrap: false,
+                  ' 👋 Hello $name',
+                  style: GoogleFonts.sourceSansPro(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ],
@@ -167,7 +169,7 @@ class _HomePageState extends State<HomePage>
                       child: TextButton(
                         onPressed: (() {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: ((context) => PlayList())));
+                              builder: ((context) => PlayList(playLists: lifOfPlaylists, ))));
                         }),
                         child: Text(
                           'See all',

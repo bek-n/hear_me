@@ -3,8 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:hear_me/style/style.dart';
 
+import '../../model/playlist.dart';
+
 class PlayList extends StatefulWidget {
-  const PlayList({Key? key}) : super(key: key);
+  final Playlist? playLists;
+  const PlayList({Key? key, required this.playLists}) : super(key: key);
 
   @override
   State<PlayList> createState() => _PlayListState();
@@ -21,20 +24,21 @@ class _PlayListState extends State<PlayList> {
               Navigator.pop(context);
             },
             icon: Icon(Icons.arrow_back_rounded)),
-        title: Text("Playlist"),
+        title: Text("Playlists"),
         leadingWidth: 31.w,
       ),
       body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          24.verticalSpace,
           Expanded(
             child: GridView.builder(
-              padding: EdgeInsets.only(top: 20),
               shrinkWrap: true,
               // physics: const NeverScrollableScrollPhysics(),
-              itemCount: 15,
+              itemCount: widget.playLists?.images?.length,
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                 mainAxisSpacing: 1,
-                crossAxisSpacing: 0,
+                crossAxisSpacing: 1,
                 maxCrossAxisExtent: 220,
                 mainAxisExtent: 210,
               ),
@@ -42,12 +46,23 @@ class _PlayListState extends State<PlayList> {
                 return Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.all(8),
-                      width: 184.w,
-                      height: 184.h,
+                      margin: EdgeInsets.only(
+                        right: 12,
+                      ),
+                      height: 180.h,
+                      width: 180.w,
                       decoration: BoxDecoration(
-                          color: Style.whiteColor,
-                          borderRadius: BorderRadius.circular(1000)),
+                          image: DecorationImage(
+                              image: NetworkImage(
+                                  '${widget.playLists?.images?[index]?.url}'),
+                              fit: BoxFit.cover),
+                          color: Colors.white,
+                          borderRadius: BorderRadius.all(Radius.circular(24))),
+                    ),
+                    5.verticalSpace,
+                    Text(
+                      '${widget.playLists?.name}',
+                      style: Theme.of(context).textTheme.headline3,
                     ),
                   ],
                 );
