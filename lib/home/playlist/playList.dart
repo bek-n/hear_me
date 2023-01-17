@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hear_me/style/style.dart';
 
 import '../../model/playlist.dart';
+import 'about_playlist.dart';
 
 class PlayList extends StatefulWidget {
   final Playlist? playLists;
@@ -45,19 +46,26 @@ class _PlayListState extends State<PlayList> {
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: [
-                    Container(
-                      margin: EdgeInsets.only(
-                        right: 12,
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: ((context) => PlaylistInfos(infoplay: widget.playLists,))));
+                      },
+                      child: Container(
+                        margin: EdgeInsets.only(
+                          right: 12,
+                        ),
+                        height: 180.h,
+                        width: 180.w,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: NetworkImage(
+                                    '${widget.playLists?.images?[index]?.url}'),
+                                fit: BoxFit.cover),
+                            color: Colors.white,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(24))),
                       ),
-                      height: 180.h,
-                      width: 180.w,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image: NetworkImage(
-                                  '${widget.playLists?.images?[index]?.url}'),
-                              fit: BoxFit.cover),
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(24))),
                     ),
                     5.verticalSpace,
                     Text(
