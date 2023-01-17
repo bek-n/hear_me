@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hear_me/home/playList.dart';
 import 'package:hear_me/model/artists.dart';
 import 'package:hear_me/store/local.dart';
 import 'package:hear_me/style/style.dart';
@@ -12,6 +13,7 @@ import '../main.dart';
 import '../model/playlist.dart';
 import '../model/top200.dart';
 import '../repository/get_info.dart';
+import 'Popular_artists.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -134,6 +136,9 @@ class _HomePageState extends State<HomePage>
               ),
               10.horizontalSpace,
               Text(
+                overflow: TextOverflow.fade,
+                maxLines: 1,
+                softWrap: false,
                 ' 👋 Hello $name',
                 style: GoogleFonts.sourceSansPro(
                   fontWeight: FontWeight.w600,
@@ -158,12 +163,17 @@ class _HomePageState extends State<HomePage>
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 24),
-                    child: Text(
-                      'See all',
-                      style: Style.textStyleSeeAll(),
-                    ),
-                  ),
+                      padding: const EdgeInsets.only(right: 24),
+                      child: TextButton(
+                        onPressed: (() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: ((context) => PlayList())));
+                        }),
+                        child: Text(
+                          'See all',
+                          style: Style.textStyleSeeAll(),
+                        ),
+                      )),
                 ],
               ),
               16.verticalSpace,
@@ -212,12 +222,17 @@ class _HomePageState extends State<HomePage>
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 24),
-                    child: Text(
-                      'See all',
-                      style: Style.textStyleSeeAll(),
-                    ),
-                  ),
+                      padding: const EdgeInsets.only(right: 24),
+                      child: TextButton(
+                        onPressed: (() {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: ((context) => PopularArtists())));
+                        }),
+                        child: Text(
+                          'See all',
+                          style: Style.textStyleSeeAll(),
+                        ),
+                      )),
                 ],
               ),
               16.verticalSpace,
@@ -245,6 +260,53 @@ class _HomePageState extends State<HomePage>
                               '${artists?.artists?[index]?.name}',
                               style: Theme.of(context).textTheme.headline3,
                             )
+                          ],
+                        ))),
+              ),
+              32.verticalSpace,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 24),
+                    child: Text(
+                      'Top 200 songs',
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 24),
+                    child: Text(
+                      'See all',
+                      style: Style.textStyleSeeAll(),
+                    ),
+                  ),
+                ],
+              ),
+              16.verticalSpace,
+              SizedBox(
+                height: 170,
+                child: ListView.builder(
+                    padding: EdgeInsets.only(left: 24),
+                    itemCount: top200songs?.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: ((context, index) => Column(
+                          children: [
+                            Container(
+                              margin: EdgeInsets.only(
+                                right: 12,
+                              ),
+                              height: 160.h,
+                              width: 160.w,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                          '${top200songs?[index]?.trackMetadata?.displayImageUri}'),
+                                      fit: BoxFit.cover),
+                                  color: Colors.white,
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(24))),
+                            ),
                           ],
                         ))),
               ),

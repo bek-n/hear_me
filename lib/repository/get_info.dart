@@ -47,10 +47,10 @@ abstract class GetInfo {
 
  static Future<List<Top200?>?> getTOP() async {
     try {
-      final url = Uri.parse("https://spotify81.p.rapidapi.com/top_200_tracks?date=2023-01-17");
+      final url = Uri.parse("https://spotify81.p.rapidapi.com/top_200_tracks");
 
       final res = await http.get(url,  headers: {
-    'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+    'X-RapidAPI-Key': '8f7674f335mshc466839187b5405p1d3ae4jsn57c9d401092c',
     'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
   });
       print(res.body);
@@ -65,3 +65,5 @@ abstract class GetInfo {
 
 
 }
+
+//  91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330 !ozimi keyim
