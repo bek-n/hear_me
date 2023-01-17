@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Style {
   Style._();
@@ -9,7 +10,6 @@ class Style {
   static const whiteColor = Colors.white;
   static const blackColor = Color(0xff181A20);
   static const bgcolorOfApp = Color(0xff181A20);
-  
 
   // ---------- Gradient   ---------- //
 
@@ -55,4 +55,11 @@ class Style {
   static textStyleSemiRegular(
           {double size = 16, Color textColor = blackColor}) =>
       TextStyle(fontSize: size, color: textColor, fontWeight: FontWeight.w400);
+
+  static textStyleSeeAll({
+    double size = 16,
+    Color textColor = primaryColor,
+  }) =>
+      GoogleFonts.urbanist(
+          fontSize: 16, fontWeight: FontWeight.w700, color: Style.primaryColor);
 }

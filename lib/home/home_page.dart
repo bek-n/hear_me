@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hear_me/store/local.dart';
+import 'package:hear_me/style/style.dart';
 import 'package:rolling_switch/rolling_switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../main.dart';
+import '../model/playlist.dart';
+import '../repository/get_info.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,11 +23,14 @@ class _HomePageState extends State<HomePage>
   String name = '';
   bool isChangedTheme = true;
   GlobalKey<ScaffoldState> key = GlobalKey();
+  Playlist? lifOfPlaylists;
+  bool isLoading = true;
 
   Future<void> getInfo() async {
     SharedPreferences _local = await SharedPreferences.getInstance();
     name = _local.getString('nickname') ?? '';
-     isChangedTheme = await LocalStorrre.getTheme();
+    isChangedTheme = await LocalStorrre.getTheme();
+    await getAllPlay();
 
     setState(() {});
   }
@@ -31,64 +38,164 @@ class _HomePageState extends State<HomePage>
   @override
   void initState() {
     getInfo();
+
     super.initState();
   }
 
-  
+  getAllPlay() async {
+    isLoading = true;
+    setState(() {});
+    lifOfPlaylists = await GetInfo.getPlaylist();
+    print(lifOfPlaylists);
+    isLoading = false;
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        drawer: Drawer(
+          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RollingSwitch.icon(
+                initialState: !isChangedTheme,
+                onChanged: (s) {
+                  isChangedTheme = !isChangedTheme;
+                  MyApp.of(context)!.change();
+                  LocalStorrre.setTheme(isChangedTheme);
+                  setState(() {});
+                },
+                rollingInfoRight: const RollingIconInfo(
+                  icon: Icons.light_mode,
+                ),
+                rollingInfoLeft: const RollingIconInfo(
+                  icon: Icons.dark_mode,
+                  backgroundColor: Colors.grey,
+                ),
+              ),
+            ],
+          ),
+        ),
+        appBar: AppBar(
+          actions: [
+            IconButton(
+                onPressed: (() {}),
+                icon: Icon(
+                  Icons.search,
+                  size: 28,
+                  color: Colors.white,
+                )),
+            IconButton(
+                onPressed: (() {}),
+                icon: Icon(
+                  Icons.notifications_active,
+                  size: 28,
+                  color: Colors.white,
+                ))
+          ],
+          title: Row(
+            children: [
+              Container(
+                height: 50.r,
+                width: 50.r,
+                decoration: BoxDecoration(
+                    color: Colors.red,
+                    shape: BoxShape.circle,
+                    image: DecorationImage(
+                        image: NetworkImage(
+                            'https://source.unsplash.com/random/1'),
+                        fit: BoxFit.cover)),
+              ),
+              10.horizontalSpace,
+              Text(
+                ' 👋 Hello $name',
+                style: GoogleFonts.sourceSansPro(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            RollingSwitch.icon(
-              initialState: !isChangedTheme,
-              onChanged: (s) {
-                isChangedTheme = !isChangedTheme;
-                MyApp.of(context)!.change();
-                LocalStorrre.setTheme(isChangedTheme);
-                setState(() {});
-              },
-              rollingInfoRight: const RollingIconInfo(
-                icon: Icons.light_mode,
+            32.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 24),
+                  child: Text(
+                    'Playlists',
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 24),
+                  child: Text(
+                    'See all',
+                    style: Style.textStyleSeeAll(),
+                  ),
+                ),
+              ],
+            ),
+            16.verticalSpace,
+            SizedBox(
+              height: 170,
+              child: ListView.builder(
+                  padding: EdgeInsets.only(left: 24),
+                  itemCount: lifOfPlaylists?.images?.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: ((context, index) => Column(
+                        children: [
+                          Container(
+                            margin: EdgeInsets.only(
+                              right: 12,
+                            ),
+                            height: 160.h,
+                            width: 160.w,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                        '${lifOfPlaylists?.images?[index]?.url}'),
+                                    fit: BoxFit.cover),
+                                color: Colors.white,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(24))),
+                          ),
+                        ],
+                      ))),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 24),
+              child: Text(
+                '${lifOfPlaylists?.name}',
+                style: Theme.of(context).textTheme.headline3,
               ),
-              rollingInfoLeft: const RollingIconInfo(
-                icon: Icons.dark_mode,
-                backgroundColor: Colors.grey,
-              ),
+            ),
+            32.verticalSpace,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(left: 24),
+                  child: Text(
+                    'Popular Artists',
+                    style: Theme.of(context).textTheme.headline5,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 24),
+                  child: Text(
+                    'See all',
+                    style: Style.textStyleSeeAll(),
+                  ),
+                ),
+              ],
             ),
           ],
-        ),
-      ),
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Container(
-              height: 50.r,
-              width: 50.r,
-              decoration: BoxDecoration(
-                  color: Colors.red,
-                  shape: BoxShape.circle,
-                  image: DecorationImage(
-                      image: AssetImage(''), fit: BoxFit.cover)),
-            ),
-            10.horizontalSpace,
-            Text(
-              ' 👋 Hello $name',
-              style: GoogleFonts.sourceSansPro(
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [],
-        ),
-      ),
-    );
+        ));
   }
 }
