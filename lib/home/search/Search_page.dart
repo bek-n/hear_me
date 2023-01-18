@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,7 +56,7 @@ class _SearchPageState extends State<SearchPage> {
                 hintTextColour: Style.blackColor,
                 searchBoxColour: Style.primaryColor,
                 enteredTextStyle:
-                    TextStyle(fontSize: 15, color: Style.blackColor),
+                    const TextStyle(fontSize: 15, color: Style.blackColor),
                 searchBoxWidth: 380,
                 enableKeyboardFocus: true,
                 isOriginalAnimation: false,
@@ -70,12 +68,12 @@ class _SearchPageState extends State<SearchPage> {
                   });
                 },
                 textEditingController: textController,
-                trailingWidget: Icon(Icons.search),
-                secondaryButtonWidget: Icon(
+                trailingWidget: const Icon(Icons.search),
+                secondaryButtonWidget: const Icon(
                   Icons.arrow_back_ios,
                   color: Style.blackColor,
                 ),
-                buttonWidget: Icon(
+                buttonWidget: const Icon(
                   Icons.search,
                   color: Style.blackColor,
                 ),
@@ -90,7 +88,7 @@ class _SearchPageState extends State<SearchPage> {
                         margin: const EdgeInsets.only(top: 200),
                         height: 150,
                         width: 150,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           image: DecorationImage(
                               image: AssetImage('assets/images/search.gif')),
                           borderRadius: BorderRadius.all(Radius.circular(23)),
@@ -138,7 +136,9 @@ class _SearchPageState extends State<SearchPage> {
                                         Navigator.of(context).push(
                                             MaterialPageRoute(
                                                 builder: ((context) =>
-                                                    SearchArtistInfo(se: s,))));
+                                                    SearchArtistInfo(
+                                                      se: s,
+                                                    ))));
                                       },
                                       child: Container(
                                         height: 120,
@@ -203,7 +203,7 @@ class _SearchPageState extends State<SearchPage> {
                         ),
                       );
                     }
-                    return SizedBox();
+                    return const SizedBox();
                   },
                 ),
         ],

@@ -163,7 +163,6 @@ class _SearchArtistInfoState extends State<SearchArtistInfo> {
                 child: FutureBuilder(
                   builder:
                       (BuildContext context, AsyncSnapshot<Search?> snapshot) {
-                    if (snapshot.hasData) {}
                     return ListView.builder(
                         itemCount: snapshot.data?.albums?.items?.length,
                         itemBuilder: (BuildContext context, int index) {
@@ -186,7 +185,7 @@ class _SearchArtistInfoState extends State<SearchArtistInfo> {
                                     color: Colors.white,
                                     image: DecorationImage(
                                         image: NetworkImage(
-                                          '${snapshot.data?.albums?.items?[index]?.data?.coverArt?.sources?[0]?.url}',
+                                          '${snapshot.data?.albums?.items?[0]?.data?.coverArt?.sources?[0]?.url}',
                                         ),
                                         fit: BoxFit.cover),
                                     borderRadius: const BorderRadius.all(
