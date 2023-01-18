@@ -226,26 +226,27 @@ class Tracks {
 }
 
 class Item {
-  Item({
-    this.addedAt,
-    this.addedBy,
-    this.isLocal,
-    this.primaryColor,
-    this.videoThumbnail,
-  });
+  Item(
+      {this.addedAt,
+      this.addedBy,
+      this.isLocal,
+      this.primaryColor,
+      this.videoThumbnail,
+     });
 
   DateTime? addedAt;
   Owner? addedBy;
   bool? isLocal;
   dynamic primaryColor;
-
-  VideoThumbnail? videoThumbnail;
+ 
+    VideoThumbnail? videoThumbnail;
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
         addedAt: DateTime.parse(json["added_at"]),
         addedBy: Owner.fromJson(json["added_by"]),
         isLocal: json["is_local"],
         primaryColor: json["primary_color"],
+       
         videoThumbnail: VideoThumbnail.fromJson(json["video_thumbnail"]),
       );
 
@@ -254,9 +255,12 @@ class Item {
         "added_by": addedBy!.toJson(),
         "is_local": isLocal,
         "primary_color": primaryColor,
+       
         "video_thumbnail": videoThumbnail!.toJson(),
       };
 }
+
+
 
 class Album {
   Album({

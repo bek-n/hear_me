@@ -2,7 +2,7 @@ import 'dart:convert';
 
 List<Top200?>? top200FromJson(String str) => json.decode(str) == null ? [] : List<Top200?>.from(json.decode(str)!.map((x) => Top200.fromJson(x)));
 
-String top200ToJson(List<Top200?>? data) => json.encode(data == null ? [] : List<dynamic>.from(data!.map((x) => x!.toJson())));
+String top200ToJson(List<Top200?>? data) => json.encode(data == null ? [] : List<dynamic>.from(data.map((x) => x!.toJson())));
 
 class Top200 {
     Top200({

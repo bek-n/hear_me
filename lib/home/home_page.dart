@@ -13,7 +13,7 @@ import '../main.dart';
 import '../model/playlist.dart';
 import '../model/top200.dart';
 import '../repository/get_info.dart';
-import 'Popular_artists.dart';
+import 'popular page/Popular_artists.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage>
   bool isChangedTheme = true;
   GlobalKey<ScaffoldState> key = GlobalKey();
   Playlist? lifOfPlaylists;
-  Artists? artists;
+  Artists? artistt;
   List<Top200?>? top200songs = [];
   bool isLoading = true;
 
@@ -62,8 +62,8 @@ class _HomePageState extends State<HomePage>
   getAllArtists() async {
     isLoading = true;
     setState(() {});
-    artists = await GetInfo.getArtists();
-    print(artists);
+    artistt = await GetInfo.getArtists();
+    print(artistt);
     isLoading = false;
     setState(() {});
   }
@@ -228,7 +228,7 @@ class _HomePageState extends State<HomePage>
                       child: TextButton(
                         onPressed: (() {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: ((context) => PopularArtists())));
+                              builder: ((context) => PopularArtists(art: artistt,))));
                         }),
                         child: Text(
                           'See all',
@@ -243,7 +243,7 @@ class _HomePageState extends State<HomePage>
                 child: ListView.builder(
                     padding: EdgeInsets.only(left: 24),
                     scrollDirection: Axis.horizontal,
-                    itemCount: artists?.artists?.length,
+                    itemCount: artistt?.artists?.length,
                     itemBuilder: ((context, index) => Column(
                           children: [
                             Container(
@@ -252,14 +252,14 @@ class _HomePageState extends State<HomePage>
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                       image: NetworkImage(
-                                          '${artists?.artists?[index]?.images?[index]?.url}'),
+                                          '${artistt?.artists?[index]?.images?[index]?.url}'),
                                       fit: BoxFit.cover),
                                   color: Colors.white,
                                   shape: BoxShape.circle),
                             ),
                             8.verticalSpace,
                             Text(
-                              '${artists?.artists?[index]?.name}',
+                              '${artistt?.artists?[index]?.name}',
                               style: Theme.of(context).textTheme.headline3,
                             )
                           ],

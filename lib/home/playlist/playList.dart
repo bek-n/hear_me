@@ -18,7 +18,6 @@ class _PlayListState extends State<PlayList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Style.bgcolorOfApp,
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
@@ -46,10 +45,12 @@ class _PlayListState extends State<PlayList> {
               itemBuilder: (BuildContext context, int index) {
                 return Column(
                   children: [
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: ((context) => PlaylistInfos(infoplay: widget.playLists,))));
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //     builder: ((context) => PlaylistInfos(
+                        //           infoplay: widget.playLists,
+                        //         ))));
                       },
                       child: Container(
                         margin: EdgeInsets.only(

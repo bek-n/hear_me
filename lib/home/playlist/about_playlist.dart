@@ -21,7 +21,7 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
       appBar: AppBar(),
       body: SingleChildScrollView(
         child: SizedBox(
-          height: 799,
+          height: 900,
           child: Column(
             children: [
               Container(
@@ -87,6 +87,7 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
               ),
               15.verticalSpace,
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   10.horizontalSpace,
                   Text(
@@ -128,15 +129,32 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
               ),
               Expanded(
                 child: ListView.builder(
-                    physics: NeverScrollableScrollPhysics(),
-                    itemCount: 50,
+                    shrinkWrap: true,
+
+                    // physics: NeverScrollableScrollPhysics(),
+                    itemCount: 100,
                     itemBuilder: ((context, index) => Row(
                           children: [
                             Container(
                               margin: EdgeInsets.only(bottom: 16),
                               height: 80.h,
-                              width: 380.w,
-                              color: Style.whiteColor,
+                              width: MediaQuery.of(context).size.width,
+                              // color: Theme.of(context).scaffoldBackgroundColor,
+                              color: Colors.white,
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 80.h,
+                                    width: 80.w,
+                                    decoration: BoxDecoration(
+                                        
+                                        color: Colors.amberAccent,
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(20))),
+                                  )
+                                ],
+                              ),
                             )
                           ],
                         ))),

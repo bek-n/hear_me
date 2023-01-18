@@ -64,7 +64,13 @@ class _MyAppState extends State<MyApp> {
                     size: 48,
                     textColor: Style.blackColor,
                   ),
+                  subtitle1: TextStyle(
+                    
+                      fontSize: 32,
+                      color: Style.blackColor,
+                      fontWeight: FontWeight.w700),
                   headline5: TextStyle(
+                    
                       fontSize: 24,
                       color: Style.blackColor,
                       fontWeight: FontWeight.w700),
@@ -83,6 +89,11 @@ class _MyAppState extends State<MyApp> {
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   backgroundColor: Style.bgcolorOfApp.withOpacity(0.85)),
               textTheme: TextTheme(
+                 subtitle1: TextStyle(
+                    
+                      fontSize: 32,
+                      color: Style.whiteColor,
+                      fontWeight: FontWeight.w700),
                   headline1: Style.textStyleNormal(
                       size: 48, textColor: Style.whiteColor),
                   headline2: Style.textStyleNormal(
