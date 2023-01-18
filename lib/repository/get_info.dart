@@ -1,6 +1,7 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../model/Search.dart';
 import '../model/artistSongs.dart';
 import '../model/artists.dart';
 import '../model/playlist.dart';
@@ -78,6 +79,25 @@ abstract class GetInfo {
       print(res.statusCode);
       print(artistsongsFromJson(res.body));
       return artistsongsFromJson(res.body);
+    } catch (e) {
+      print(e);
+    }
+    return null;
+  }
+
+  static Future<Search?> getSearch({required String text}) async {
+    try {
+      final url = Uri.parse('https://spotify81.p.rapidapi.com/search?q=$text&type=multi&offset=0&limit=10&numberOfTopResults=5');
+      final res = await http.get(url,  headers: {
+        'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+        'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
+      });
+
+
+      print(res.statusCode);
+      print(res.body);
+
+      return welcomeFromJson(res.body);
     } catch (e) {
       print(e);
     }

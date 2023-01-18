@@ -51,6 +51,7 @@ dependencies:
   custom_navigation_bar: ^0.8.2
   proste_indexed_stack: ^0.2.4
   cached_network_image: ^3.2.3
+  searchbar_animation: ^0.0.4
   
 
 dev_dependencies:
