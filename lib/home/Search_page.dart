@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hear_me/components/cachedNetworkImage.dart';
+import 'package:hear_me/components/timerForSearch.dart';
 import 'package:hear_me/model/Search.dart';
 import 'package:hear_me/style/style.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
@@ -18,7 +19,7 @@ class _SearchPageState extends State<SearchPage> {
   TextEditingController textController = TextEditingController();
 
   GlobalKey<ScaffoldState> key = GlobalKey();
-
+  final _delayed = Delayed(milliseconds: 700);
   String change = "";
 
   @override
@@ -46,8 +47,10 @@ class _SearchPageState extends State<SearchPage> {
                   debugPrint('onFieldSubmitted value $value');
                 },
                 onChanged: (value) {
-                  change = value;
-                  setState(() {});
+                  _delayed.run(() {
+                    change = value;
+                    setState(() {});
+                  });
                 },
                 textEditingController: textController,
                 trailingWidget: Icon(Icons.search),
