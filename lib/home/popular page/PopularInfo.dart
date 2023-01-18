@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hear_me/home/popular%20page/popular_info_seeAll.dart';
+import 'package:hear_me/home/popular%20page/popularSeeAll.dart';
 import 'package:hear_me/model/artists.dart';
 import 'package:hear_me/style/style.dart';
 
@@ -52,7 +52,6 @@ class _Page35State extends State<Page35> {
     int index = 0;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
           IconButton(
@@ -177,12 +176,9 @@ class _Page35State extends State<Page35> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Songs',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 24),
+                  style: Theme.of(context).textTheme.headline5,
                 ),
                 TextButton(
                   onPressed: () {
@@ -238,11 +234,7 @@ class _Page35State extends State<Page35> {
                                 15.horizontalSpace,
                                 Text(
                                   '${songs?.data?.artist?.discography?.singles?.items?[index]?.releases?.items?[0]?.name}',
-                                  style: GoogleFonts.urbanist(
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700,
-                                      color: Colors.white),
+                                  style: Theme.of(context).textTheme.headline3,
                                 ),
                                 const Spacer(),
                                 const Icon(

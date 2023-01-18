@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hear_me/components/cachedNetworkImage.dart';
 import 'package:hear_me/home/playlist/playList.dart';
 import 'package:hear_me/home/top200/200info.dart';
 import 'package:hear_me/model/artists.dart';
@@ -194,20 +195,11 @@ class _HomePageState extends State<HomePage>
                           scrollDirection: Axis.horizontal,
                           itemBuilder: ((context, index) => Column(
                                 children: [
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                      right: 12,
-                                    ),
-                                    height: 160.h,
-                                    width: 160.w,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                '${lifOfPlaylists?.images?[index]?.url}'),
-                                            fit: BoxFit.cover),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(24))),
-                                  ),
+                                  CustomImageNetwork(
+                                      height: 160,
+                                      width: 160,
+                                      image:
+                                          '${lifOfPlaylists?.images?[index]?.url}')
                                 ],
                               ))),
                     ),
@@ -254,16 +246,12 @@ class _HomePageState extends State<HomePage>
                           itemCount: artistt?.artists?.length,
                           itemBuilder: ((context, index) => Column(
                                 children: [
-                                  Container(
-                                    height: 160,
-                                    width: 160,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                '${artistt?.artists?[index]?.images?[index]?.url}'),
-                                            fit: BoxFit.cover),
-                                        shape: BoxShape.circle),
-                                  ),
+                                  CustomImageNetwork(
+                                      radius: 1000,
+                                      height: 160,
+                                      width: 160,
+                                      image:
+                                          '${artistt?.artists?[index]?.images?[index]?.url}'),
                                   8.verticalSpace,
                                   Text(
                                     '${artistt?.artists?[index]?.name}',
@@ -289,7 +277,9 @@ class _HomePageState extends State<HomePage>
                           child: TextButton(
                             onPressed: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: ((context) => TopInfo(top: top200songs,))));
+                                  builder: ((context) => TopInfo(
+                                        top: top200songs,
+                                      ))));
                             },
                             child: Text(
                               'See all',
@@ -308,20 +298,14 @@ class _HomePageState extends State<HomePage>
                           scrollDirection: Axis.horizontal,
                           itemBuilder: ((context, index) => Column(
                                 children: [
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                      right: 12,
-                                    ),
-                                    height: 160.h,
-                                    width: 160.w,
-                                    decoration: BoxDecoration(
-                                        image: DecorationImage(
-                                            image: NetworkImage(
-                                                '${top200songs?[index]?.trackMetadata?.displayImageUri}'),
-                                            fit: BoxFit.cover),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(24))),
-                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 12),
+                                    child: CustomImageNetwork(
+                                        height: 160,
+                                        width: 160,
+                                        image:
+                                            '${top200songs?[index]?.trackMetadata?.displayImageUri}'),
+                                  )
                                 ],
                               ))),
                     ),

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hear_me/home/home_page.dart';
-import 'package:hear_me/home/popular%20page/popular_info.dart';
+import 'package:hear_me/home/popular%20page/PopularInfo.dart';
 import 'package:hear_me/model/artists.dart';
 import 'package:hear_me/style/style.dart';
 
@@ -51,7 +51,9 @@ class _PopularArtistsState extends State<PopularArtists> {
                     GestureDetector(
                       onTap: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: ((context) => Page35(info: widget.art,))));
+                            builder: ((context) => Page35(
+                                  info: widget.art,
+                                ))));
                       },
                       child: Container(
                         margin: EdgeInsets.all(8),

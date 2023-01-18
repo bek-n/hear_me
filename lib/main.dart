@@ -51,6 +51,13 @@ class _MyAppState extends State<MyApp> {
             debugShowCheckedModeBanner: false,
             themeMode: isChangeTheme ? ThemeMode.light : ThemeMode.dark,
             theme: ThemeData(
+              
+              inputDecorationTheme: InputDecorationTheme(
+                
+                  prefixIconColor: Style.primaryColor,
+                  hintStyle: TextStyle(
+                    fontSize: 20,
+                  )),
               scaffoldBackgroundColor: Style.whiteColor,
               appBarTheme: AppBarTheme(
                 backgroundColor: Style.primaryColor,
@@ -65,12 +72,10 @@ class _MyAppState extends State<MyApp> {
                     textColor: Style.blackColor,
                   ),
                   subtitle1: TextStyle(
-                    
                       fontSize: 32,
                       color: Style.blackColor,
                       fontWeight: FontWeight.w700),
                   headline5: TextStyle(
-                    
                       fontSize: 24,
                       color: Style.blackColor,
                       fontWeight: FontWeight.w700),
@@ -89,8 +94,7 @@ class _MyAppState extends State<MyApp> {
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   backgroundColor: Style.bgcolorOfApp.withOpacity(0.85)),
               textTheme: TextTheme(
-                 subtitle1: TextStyle(
-                    
+                  subtitle1: TextStyle(
                       fontSize: 32,
                       color: Style.whiteColor,
                       fontWeight: FontWeight.w700),

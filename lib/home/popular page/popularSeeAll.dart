@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hear_me/components/cachedNetworkImage.dart';
 
 import '../../model/artistSongs.dart';
 import '../../style/style.dart';
@@ -36,18 +37,11 @@ class _SeeAllState extends State<SeeAll> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Container(
-                          width: 80,
-                          height: 80,
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                  '${widget.seeAll?.data?.artist?.discography?.singles?.items?[index]?.releases?.items?[0]?.coverArt?.sources?[0]?.url}',
-                                ),
-                                fit: BoxFit.cover),
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                          ),
-                        ),
+                        CustomImageNetwork(
+                            height: 80,
+                            width: 80,
+                            image:
+                                '${widget.seeAll?.data?.artist?.discography?.singles?.items?[index]?.releases?.items?[0]?.coverArt?.sources?[0]?.url}'),
                         35.horizontalSpace,
                         Expanded(
                           child: Text(
@@ -55,11 +49,7 @@ class _SeeAllState extends State<SeeAll> {
                             maxLines: 1,
                             softWrap: false,
                             '${widget.seeAll?.data?.artist?.discography?.singles?.items?[index]?.releases?.items?[0]?.name}',
-                            style: GoogleFonts.urbanist(
-                                fontStyle: FontStyle.normal,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white),
+                            style: Theme.of(context).textTheme.headline3,
                           ),
                         ),
                         Spacer(),

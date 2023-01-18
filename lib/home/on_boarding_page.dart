@@ -58,9 +58,8 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 ),
                 Spacer(),
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 24,
-                  ),
+                  padding:
+                      const EdgeInsets.only(left: 24, right: 24, bottom: 10),
                   child: GestureDetector(
                     onTap: () {
                       Navigator.of(context).pushAndRemoveUntil(
