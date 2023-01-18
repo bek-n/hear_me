@@ -98,11 +98,12 @@ class _HomePageState extends State<HomePage>
                   setState(() {});
                 },
                 rollingInfoRight: const RollingIconInfo(
+                  backgroundColor: Style.primaryColor,
                   icon: Icons.light_mode,
                 ),
                 rollingInfoLeft: const RollingIconInfo(
                   icon: Icons.dark_mode,
-                  backgroundColor: Colors.grey,
+                  backgroundColor: Style.darkModeColor,
                 ),
               ),
             ],
