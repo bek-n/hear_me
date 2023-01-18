@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hear_me/home/popular%20page/popular_info_seeAll.dart';
 import 'package:hear_me/model/artists.dart';
 import 'package:hear_me/style/style.dart';
 
+import '../../components/shimmer_popular.dart';
 import '../../model/artistSongs.dart';
 import '../../repository/get_info.dart';
 
@@ -56,27 +57,27 @@ class _Page35State extends State<Page35> {
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(Icons.more_horiz),
+            icon: const Icon(Icons.more_horiz),
           ),
         ],
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back)),
+            icon: const Icon(Icons.arrow_back)),
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: Column(children: [
             SizedBox(
               height: 255,
               child: ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: 1,
                 itemBuilder: (BuildContext context, int index) {
                   return Padding(
-                    padding: EdgeInsets.only(left: 80, right: 80),
+                    padding: const EdgeInsets.only(left: 80, right: 80),
                     child: Container(
                       height: 250,
                       width: 250,
@@ -94,24 +95,24 @@ class _Page35State extends State<Page35> {
               '${widget.info?.artists?[index]?.name}',
               style: Theme.of(context).textTheme.subtitle1,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
               ' Popularity: ${widget.info?.artists?[index]?.popularity}',
               style: Theme.of(context).textTheme.headline3,
             ),
-            SizedBox(
+            const SizedBox(
               height: 8,
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  children: [
+                  children: const [
                     Icon(
                       Icons.favorite_border_outlined,
                       size: 24,
@@ -143,14 +144,14 @@ class _Page35State extends State<Page35> {
                   child: Container(
                     height: 45,
                     width: 112,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.all(Radius.circular(100)),
                     ),
                     child: Row(
                       children: [
                         15.horizontalSpace,
-                        Icon(
+                        const Icon(
                           Icons.play_circle_outline,
                           color: Style.whiteColor,
                         ),
@@ -165,10 +166,10 @@ class _Page35State extends State<Page35> {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
-            Divider(
+            const Divider(
               color: Color(0xff35383F),
               thickness: 0.5,
               indent: 2,
@@ -176,7 +177,7 @@ class _Page35State extends State<Page35> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Songs',
                   style: TextStyle(
                       color: Colors.white,
@@ -190,7 +191,7 @@ class _Page35State extends State<Page35> {
                               seeAll: songs,
                             ))));
                   },
-                  child: Text(
+                  child: const Text(
                     'See All',
                     style: TextStyle(
                         color: Color(0xff06C149),
@@ -201,22 +202,19 @@ class _Page35State extends State<Page35> {
               ],
             ),
             const SizedBox(height: 20),
-            SizedBox(
-              height: MediaQuery.of(context).size.height,
-              child: FutureBuilder(
-                builder: (context, AsyncSnapshot<Artistsongs?> snapshot) {
-                  if (snapshot.hasError) {
-                    return Text('Network error');
-                  } else {
-                    return ListView.builder(
-                        physics: NeverScrollableScrollPhysics(),
+            isLoading
+                ? ShimmerPop()
+                : SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: 4,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
-                            margin: EdgeInsets.only(bottom: 10),
+                            margin: const EdgeInsets.only(bottom: 10),
                             width: 300,
                             height: 80,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: Colors.transparent,
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20)),
@@ -228,14 +226,13 @@ class _Page35State extends State<Page35> {
                                   width: 80,
                                   height: 80,
                                   decoration: BoxDecoration(
-                                    color: Colors.red,
                                     image: DecorationImage(
                                         image: NetworkImage(
                                           '${songs?.data?.artist?.discography?.singles?.items?[index]?.releases?.items?[0]?.coverArt?.sources?[0]?.url}',
                                         ),
                                         fit: BoxFit.cover),
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(20)),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20)),
                                   ),
                                 ),
                                 15.horizontalSpace,
@@ -247,13 +244,13 @@ class _Page35State extends State<Page35> {
                                       fontWeight: FontWeight.w700,
                                       color: Colors.white),
                                 ),
-                                Spacer(),
-                                Icon(
+                                const Spacer(),
+                                const Icon(
                                   Icons.play_circle,
                                   color: Style.primaryColor,
                                 ),
                                 5.horizontalSpace,
-                                Icon(
+                                const Icon(
                                   Icons.menu,
                                   color: Style.primaryColor,
                                 )
@@ -262,11 +259,7 @@ class _Page35State extends State<Page35> {
                               ],
                             ),
                           );
-                        });
-                  }
-                },
-              ),
-            ),
+                        })),
           ]),
         ),
       ),

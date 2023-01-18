@@ -1,6 +1,8 @@
-import 'package:fancy_bar/fancy_bar.dart';
+import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:hear_me/style/style.dart';
 import 'home_page.dart';
+import 'package:proste_indexed_stack/proste_indexed_stack.dart';
 
 class GeneralPage extends StatefulWidget {
   const GeneralPage({super.key});
@@ -10,11 +12,11 @@ class GeneralPage extends StatefulWidget {
 }
 
 class _GeneralPageState extends State<GeneralPage> {
-  List<Widget> mainPages = [
-    HomePage(),
-    Placeholder(),
-    Placeholder(),
-    Placeholder(),
+  List<IndexedStackChild> mainPages = [
+    IndexedStackChild(child: HomePage()),
+    IndexedStackChild(child: Placeholder()),
+    IndexedStackChild(child: Placeholder()),
+    IndexedStackChild(child: Placeholder()),
   ];
   int currentIndex = 0;
   PageController _pageController = PageController();
@@ -22,34 +24,49 @@ class _GeneralPageState extends State<GeneralPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: mainPages[currentIndex],
+        body: ProsteIndexedStack(
+          index: currentIndex,
+          children: mainPages,
+        ),
         resizeToAvoidBottomInset: false,
-        bottomNavigationBar: FancyBottomBar(
-            selectedIndex: currentIndex,
-            type: FancyType.FancyV2,
+        bottomNavigationBar: CustomNavigationBar(
+            scaleCurve: Curves.fastLinearToSlowEaseIn,
+            iconSize: 27,
+            selectedColor: Style.primaryColor,
+            unSelectedColor: Color(0xff9E9E9E),
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+            currentIndex: currentIndex,
             items: [
-              FancyItem(
-                textColor: Color(0xff06C149),
-                title: 'Home',
+              CustomNavigationBarItem(
+                title: Text(
+                  'Home',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
                 icon: Icon(Icons.home),
               ),
-              FancyItem(
-                textColor: Color(0xff06C149),
-                title: 'Explore',
+              CustomNavigationBarItem(
+                title: Text(
+                  'Explore',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
                 icon: Icon(Icons.explore),
               ),
-              FancyItem(
-                textColor: Color(0xff06C149),
-                title: 'Library',
+              CustomNavigationBarItem(
+                title: Text(
+                  'Library',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
                 icon: Icon(Icons.library_add),
               ),
-              FancyItem(
-                textColor: Color(0xff06C149),
-                title: 'Profile',
+              CustomNavigationBarItem(
+                title: Text(
+                  'Profile',
+                  style: Theme.of(context).textTheme.headline2,
+                ),
                 icon: Icon(Icons.person),
               ),
             ],
-            onItemSelected: ((value) => setState(() {
+            onTap: ((value) => setState(() {
                   currentIndex = value;
                 }))));
   }

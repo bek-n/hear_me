@@ -40,7 +40,6 @@ class _SeeAllState extends State<SeeAll> {
                           width: 80,
                           height: 80,
                           decoration: BoxDecoration(
-                            color: Colors.red,
                             image: DecorationImage(
                                 image: NetworkImage(
                                   '${widget.seeAll?.data?.artist?.discography?.singles?.items?[index]?.releases?.items?[0]?.coverArt?.sources?[0]?.url}',
