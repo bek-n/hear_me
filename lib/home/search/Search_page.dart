@@ -6,7 +6,8 @@ import 'package:hear_me/components/timerForSearch.dart';
 import 'package:hear_me/model/Search.dart';
 import 'package:hear_me/style/style.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
-import '../repository/get_info.dart';
+import '../../repository/get_info.dart';
+import 'SearchInfo.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -130,53 +131,61 @@ class _SearchPageState extends State<SearchPage> {
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(10.0),
-                                    child: Container(
-                                      height: 120,
-                                      width: double.infinity,
-                                      decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(24))),
-                                      margin: const EdgeInsets.only(
-                                          left: 10, right: 12),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          const Padding(
-                                            padding: EdgeInsets.only(
-                                                top: 10, left: 15),
-                                            child: ClipRRect(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(24)),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                                builder: ((context) =>
+                                                    SearchArtistInfo(se: s,))));
+                                      },
+                                      child: Container(
+                                        height: 120,
+                                        width: double.infinity,
+                                        decoration: const BoxDecoration(
+                                            borderRadius: BorderRadius.all(
+                                                Radius.circular(24))),
+                                        margin: const EdgeInsets.only(
+                                            left: 10, right: 12),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            const Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: 10, left: 15),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(24)),
+                                              ),
                                             ),
-                                          ),
-                                          Padding(
-                                              padding:
-                                                  const EdgeInsets.all(8.0),
-                                              child: CustomImageNetwork(
-                                                  height: 130,
-                                                  width: 130,
-                                                  image:
-                                                      "${snapshot.data?.artists?.items?[index]?.data?.visuals?.avatarImage?.sources?.first?.url}")),
-                                          SizedBox(
-                                            width: 200.w,
-                                            child: Container(
-                                              margin: const EdgeInsets.only(
-                                                  left: 30, top: 50),
-                                              child: Text(
-                                                  "${snapshot.data?.artists?.items?[index]?.data?.profile?.name}",
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  maxLines: 1,
-                                                  softWrap: false,
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .headline3),
+                                            Padding(
+                                                padding:
+                                                    const EdgeInsets.all(8.0),
+                                                child: CustomImageNetwork(
+                                                    height: 130,
+                                                    width: 130,
+                                                    image:
+                                                        "${snapshot.data?.artists?.items?[index]?.data?.visuals?.avatarImage?.sources?.first?.url}")),
+                                            SizedBox(
+                                              width: 200.w,
+                                              child: Container(
+                                                margin: const EdgeInsets.only(
+                                                    left: 30, top: 50),
+                                                child: Text(
+                                                    "${snapshot.data?.artists?.items?[index]?.data?.profile?.name}",
+                                                    overflow:
+                                                        TextOverflow.ellipsis,
+                                                    maxLines: 1,
+                                                    softWrap: false,
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .headline3),
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),
