@@ -5,7 +5,7 @@ import 'package:hear_me/components/cachedNetworkImage.dart';
 import 'package:hear_me/model/Search.dart';
 import 'package:hear_me/style/style.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
-import '../../repository/get_info.dart';
+import '../repository/get_info.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -32,12 +32,13 @@ class _SearchPageState extends State<SearchPage> {
             children: [
               25.verticalSpace,
               SearchBarAnimation(
+                hintText: 'What do you want to listen to?',
                 buttonColour: Style.primaryColor,
                 hintTextColour: Style.blackColor,
                 searchBoxColour: Style.primaryColor,
                 enteredTextStyle:
                     TextStyle(fontSize: 15, color: Style.blackColor),
-                searchBoxWidth: 350,
+                searchBoxWidth: 380,
                 enableKeyboardFocus: true,
                 isOriginalAnimation: false,
                 buttonBorderColour: Colors.black45,
@@ -108,6 +109,8 @@ class _SearchPageState extends State<SearchPage> {
                                         child: Text(
                                             "${snapshot.data?.artists?.items?[index]?.data?.profile?.name}",
                                             overflow: TextOverflow.ellipsis,
+                                            maxLines: 1,
+                                            softWrap: false,
                                             style: Theme.of(context)
                                                 .textTheme
                                                 .headline3),

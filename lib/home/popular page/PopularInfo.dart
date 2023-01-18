@@ -233,6 +233,9 @@ class _Page35State extends State<Page35> {
                                 ),
                                 15.horizontalSpace,
                                 Text(
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  softWrap: false,
                                   '${songs?.data?.artist?.discography?.singles?.items?[index]?.releases?.items?[0]?.name}',
                                   style: Theme.of(context).textTheme.headline3,
                                 ),

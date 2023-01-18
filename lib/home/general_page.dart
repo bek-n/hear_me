@@ -1,6 +1,6 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:hear_me/home/popular%20page/Search_page.dart';
+import 'package:hear_me/home/Search_page.dart';
 import 'package:hear_me/style/style.dart';
 import 'home_page.dart';
 import 'package:proste_indexed_stack/proste_indexed_stack.dart';
