@@ -14,14 +14,14 @@ class ShimmerPop extends StatelessWidget {
       child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+              physics: const NeverScrollableScrollPhysics(),
               itemCount: 4,
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 10),
                   width: 300,
                   height: 80,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Colors.transparent,
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                   ),
@@ -31,7 +31,7 @@ class ShimmerPop extends StatelessWidget {
                       Container(
                         width: 80,
                         height: 80,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Color.fromARGB(255, 110, 108, 108),
                           borderRadius: BorderRadius.all(Radius.circular(20)),
                         ),
@@ -44,7 +44,7 @@ class ShimmerPop extends StatelessWidget {
                           Container(
                             height: 4,
                             width: 200,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(50)),
                               color: Color.fromARGB(255, 110, 108, 108),
@@ -54,7 +54,7 @@ class ShimmerPop extends StatelessWidget {
                           Container(
                             height: 4,
                             width: 100,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(50)),
                               color: Color.fromARGB(255, 110, 108, 108),
@@ -62,13 +62,13 @@ class ShimmerPop extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Spacer(),
-                      Icon(
+                      const Spacer(),
+                      const Icon(
                         Icons.play_circle,
                         color: Style.primaryColor,
                       ),
                       5.horizontalSpace,
-                      Icon(
+                      const Icon(
                         Icons.menu,
                         color: Style.primaryColor,
                       )

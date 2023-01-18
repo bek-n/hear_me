@@ -1,10 +1,9 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:hear_me/style/style.dart';
-
 import '../../model/playlist.dart';
-import 'about_playlist.dart';
+
 
 class PlayList extends StatefulWidget {
   final Playlist? playLists;

@@ -44,19 +44,19 @@ class _ShimmerHomeState extends State<ShimmerHome> {
           SizedBox(
             height: 170,
             child: ListView.builder(
-                padding: EdgeInsets.only(left: 24),
+                padding: const EdgeInsets.only(left: 24),
                 itemCount: 5,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) => Column(
                       children: [
                         Shimmer(
                           child: Container(
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                               right: 12,
                             ),
                             height: 160.h,
                             width: 160.w,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 110, 108, 108),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(24))),
@@ -89,7 +89,7 @@ class _ShimmerHomeState extends State<ShimmerHome> {
           SizedBox(
             height: 190,
             child: ListView.builder(
-                padding: EdgeInsets.only(left: 24),
+                padding: const EdgeInsets.only(left: 24),
                 scrollDirection: Axis.horizontal,
                 itemCount: 5,
                 itemBuilder: ((context, index) => Column(
@@ -99,7 +99,7 @@ class _ShimmerHomeState extends State<ShimmerHome> {
                             child: Container(
                               height: 160,
                               width: 160,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                   color: Color.fromARGB(255, 110, 108, 108),
                                   shape: BoxShape.circle),
                             ),
@@ -132,19 +132,19 @@ class _ShimmerHomeState extends State<ShimmerHome> {
           SizedBox(
             height: 170,
             child: ListView.builder(
-                padding: EdgeInsets.only(left: 24),
+                padding: const EdgeInsets.only(left: 24),
                 itemCount: 5,
                 scrollDirection: Axis.horizontal,
                 itemBuilder: ((context, index) => Column(
                       children: [
                         Shimmer(
                           child: Container(
-                            margin: EdgeInsets.only(
+                            margin: const EdgeInsets.only(
                               right: 12,
                             ),
                             height: 160.h,
                             width: 160.w,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                                 color: Color.fromARGB(255, 110, 108, 108),
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(24))),

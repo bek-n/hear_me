@@ -1,18 +1,11 @@
-import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../local/local_store.dart';
-import '../model/user_model.dart';
 import 'congrats_page.dart';
 
 class FillBio extends StatefulWidget {
@@ -50,7 +43,7 @@ class _FillBioState extends State<FillBio> {
             onPressed: (() {
               Navigator.pop(context);
             }),
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             )),
@@ -63,18 +56,18 @@ class _FillBioState extends State<FillBio> {
                     children: [
                       50.verticalSpace,
                       Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             left: 150, right: 150, top: 23, bottom: 23),
                         decoration: BoxDecoration(
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                   blurRadius: 1,
                                   offset: Offset(-0, 1),
                                   color: Colors.grey)
                             ],
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            color: Color(0xffFAFAFA),
-                            border: Border.all(color: Color(0xffEBEEF2))),
+                            borderRadius: const BorderRadius.all(Radius.circular(20)),
+                            color: const Color(0xffFAFAFA),
+                            border: Border.all(color: const Color(0xffEBEEF2))),
                         child: Column(
                           children: [
                             InkWell(
@@ -93,12 +86,12 @@ class _FillBioState extends State<FillBio> {
                                 setState(() {});
                               },
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Color(0xff06C149)),
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 24, vertical: 24),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.photo_camera,
                                   color: Colors.white,
                                 ),
@@ -115,18 +108,18 @@ class _FillBioState extends State<FillBio> {
                       ),
                       24.verticalSpace,
                       Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                             left: 150, right: 150, top: 23, bottom: 23),
                         decoration: BoxDecoration(
-                            boxShadow: [
+                            boxShadow: const [
                               BoxShadow(
                                   blurRadius: 1,
                                   offset: Offset(-0, 1),
                                   color: Colors.grey)
                             ],
-                            borderRadius: BorderRadius.all(Radius.circular(20)),
-                            color: Color(0xffFAFAFA),
-                            border: Border.all(color: Color(0xffEBEEF2))),
+                            borderRadius: const BorderRadius.all(Radius.circular(20)),
+                            color: const Color(0xffFAFAFA),
+                            border: Border.all(color: const Color(0xffEBEEF2))),
                         child: Column(
                           children: [
                             InkWell(
@@ -145,12 +138,12 @@ class _FillBioState extends State<FillBio> {
                                 setState(() {});
                               },
                               child: Container(
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     color: Color(0xff06C149)),
-                                padding: EdgeInsets.symmetric(
+                                padding: const EdgeInsets.symmetric(
                                     horizontal: 24, vertical: 24),
-                                child: Icon(
+                                child: const Icon(
                                   Icons.folder,
                                   color: Colors.white,
                                 ),
@@ -167,10 +160,10 @@ class _FillBioState extends State<FillBio> {
                       ),
                     ],
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
             24.verticalSpace,
             imagePath.isEmpty
-                ? SizedBox.shrink()
+                ? const SizedBox.shrink()
                 : Column(
                     children: [
                       Stack(
@@ -195,7 +188,7 @@ class _FillBioState extends State<FillBio> {
                                       context: context,
                                       builder: ((context) =>
                                           CupertinoAlertDialog(
-                                            title: Text('Choose'),
+                                            title: const Text('Choose'),
                                             actions: [
                                               CupertinoButton(
                                                   onPressed: (() async {
@@ -224,7 +217,7 @@ class _FillBioState extends State<FillBio> {
                                                       }
                                                     });
                                                   }),
-                                                  child: Text("Take photo")),
+                                                  child: const Text("Take photo")),
                                               CupertinoButton(
                                                   onPressed: (() async {
                                                     _picker
@@ -252,30 +245,30 @@ class _FillBioState extends State<FillBio> {
                                                       }
                                                     });
                                                   }),
-                                                  child: Text("From Gallery")),
+                                                  child: const Text("From Gallery")),
                                               CupertinoButton(
                                                   onPressed: (() async {
                                                     imagePath = '';
                                                     Navigator.pop(context);
                                                     setState(() {});
                                                   }),
-                                                  child: Text('Delete')),
+                                                  child: const Text('Delete')),
                                               CupertinoButton(
                                                   onPressed: (() async {
                                                     Navigator.pop(context);
                                                   }),
-                                                  child: Text('Cancel'))
+                                                  child: const Text('Cancel'))
                                             ],
                                           )));
                                 },
                                 child: Container(
                                   height: 35.h,
                                   width: 35.w,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     color: Color(0xff06C149),
                                     shape: BoxShape.circle,
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.edit,
                                     color: Colors.white,
                                   ),
@@ -292,14 +285,14 @@ class _FillBioState extends State<FillBio> {
                               style: GoogleFonts.sourceSansPro(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xff2C3A4B)),
+                                  color: const Color(0xff2C3A4B)),
                             ),
                             Text(
                               '*',
                               style: GoogleFonts.sourceSansPro(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xffDA1414)),
+                                  color: const Color(0xffDA1414)),
                             ),
                           ],
                         ),
@@ -314,7 +307,7 @@ class _FillBioState extends State<FillBio> {
                           },
                           controller: fullname,
                           keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: 24, right: 80, top: 12, bottom: 12),
                             hintText: 'Full Name',
@@ -340,10 +333,16 @@ class _FillBioState extends State<FillBio> {
                               padding: const EdgeInsets.only(
                                   left: 24, top: 8, right: 24),
                               child: Container(
+                                padding: const EdgeInsets.only(
+                                    top: 6, bottom: 6, left: 36),
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                    color: Color(0xffEBEEF2)),
                                 child: Row(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 4),
+                                    const Padding(
+                                      padding: EdgeInsets.only(right: 4),
                                       child: Icon(
                                         Icons.error,
                                         color: Color(0xff394452),
@@ -354,19 +353,13 @@ class _FillBioState extends State<FillBio> {
                                       style: GoogleFonts.sourceSansPro(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff394452)),
+                                          color: const Color(0xff394452)),
                                     ),
                                   ],
                                 ),
-                                padding: EdgeInsets.only(
-                                    top: 6, bottom: 6, left: 36),
-                                decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8)),
-                                    color: Color(0xffEBEEF2)),
                               ),
                             )
-                          : SizedBox.shrink(),
+                          : const SizedBox.shrink(),
                       Padding(
                         padding: const EdgeInsets.only(left: 48, top: 35),
                         child: Row(
@@ -376,14 +369,14 @@ class _FillBioState extends State<FillBio> {
                               style: GoogleFonts.sourceSansPro(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xff2C3A4B)),
+                                  color: const Color(0xff2C3A4B)),
                             ),
                             Text(
                               '*',
                               style: GoogleFonts.sourceSansPro(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
-                                  color: Color(0xffDA1414)),
+                                  color: const Color(0xffDA1414)),
                             ),
                           ],
                         ),
@@ -398,7 +391,7 @@ class _FillBioState extends State<FillBio> {
                           },
                           controller: nickname,
                           keyboardType: TextInputType.emailAddress,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             contentPadding: EdgeInsets.only(
                                 left: 24, right: 80, top: 12, bottom: 12),
                             hintText: 'Nick Name',
@@ -424,10 +417,16 @@ class _FillBioState extends State<FillBio> {
                               padding: const EdgeInsets.only(
                                   left: 24, top: 8, right: 24),
                               child: Container(
+                                padding: const EdgeInsets.only(
+                                    top: 6, bottom: 6, left: 36),
+                                decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(8)),
+                                    color: Color(0xffEBEEF2)),
                                 child: Row(
                                   children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(right: 4),
+                                    const Padding(
+                                      padding: EdgeInsets.only(right: 4),
                                       child: Icon(
                                         Icons.error,
                                         color: Color(0xff394452),
@@ -438,19 +437,13 @@ class _FillBioState extends State<FillBio> {
                                       style: GoogleFonts.sourceSansPro(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w400,
-                                          color: Color(0xff394452)),
+                                          color: const Color(0xff394452)),
                                     ),
                                   ],
                                 ),
-                                padding: EdgeInsets.only(
-                                    top: 6, bottom: 6, left: 36),
-                                decoration: BoxDecoration(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(8)),
-                                    color: Color(0xffEBEEF2)),
                               ),
                             )
-                          : SizedBox.shrink(),
+                          : const SizedBox.shrink(),
                     ],
                   ),
             35.verticalSpace,
@@ -482,21 +475,21 @@ class _FillBioState extends State<FillBio> {
                     _store.setString('nickname', nickname.text);
 
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: ((context) => CongratsPage())));
+                        builder: ((context) => const CongratsPage())));
                   }
                 },
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: AnimatedContainer(
-                    duration: Duration(milliseconds: 400),
-                    padding: EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+                    duration: const Duration(milliseconds: 400),
+                    padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
                     decoration: BoxDecoration(
                       color: imagePath.isEmpty ||
                               fullname.text.isEmpty ||
                               nickname.text.isEmpty
-                          ? Color.fromARGB(255, 138, 234, 172)
-                          : Color(0xff06C149),
-                      borderRadius: BorderRadius.all(Radius.circular(32)),
+                          ? const Color.fromARGB(255, 138, 234, 172)
+                          : const Color(0xff06C149),
+                      borderRadius: const BorderRadius.all(Radius.circular(32)),
                     ),
                     child: Center(
                       child: Text(

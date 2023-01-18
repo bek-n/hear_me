@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hear_me/components/cachedNetworkImage.dart';
@@ -5,7 +7,7 @@ import 'package:hear_me/model/top200.dart';
 
 class TopInfo extends StatefulWidget {
   final List<Top200?>? top;
-  TopInfo({super.key, required this.top});
+  const TopInfo({super.key, required this.top});
 
   @override
   State<TopInfo> createState() => _TopInfoState();

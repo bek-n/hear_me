@@ -15,7 +15,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
     return Scaffold(
         body: Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/images/G.png'), fit: BoxFit.contain)),
       child: Column(
@@ -24,7 +24,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           Container(
             height: MediaQuery.of(context).size.height / 3,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(60),
@@ -34,7 +34,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 Padding(
                   padding: const EdgeInsets.only(left: 24, right: 24, top: 25),
                   child: RichText(
-                      text: TextSpan(
+                      text: const TextSpan(
                           text: 'Listen to the best music everyday with ',
                           style: TextStyle(
                             color: Colors.black,
@@ -56,7 +56,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                                 fontSize: 35)),
                       ])),
                 ),
-                Spacer(),
+                const Spacer(),
                 Padding(
                   padding:
                       const EdgeInsets.only(left: 24, right: 24, bottom: 10),
@@ -64,13 +64,13 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     onTap: () {
                       Navigator.of(context).pushAndRemoveUntil(
                           MaterialPageRoute(
-                              builder: ((context) => StartPage())),
+                              builder: ((context) => const StartPage())),
                           (route) => false);
                     },
                     child: Container(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 18),
-                      decoration: BoxDecoration(
+                          const EdgeInsets.symmetric(horizontal: 16, vertical: 18),
+                      decoration: const BoxDecoration(
                           boxShadow: [
                             BoxShadow(
                                 blurRadius: 24,
@@ -79,7 +79,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                           ],
                           color: Color(0xff06C149),
                           borderRadius: BorderRadius.all(Radius.circular(100))),
-                      child: Center(
+                      child: const Center(
                           child: Text(
                         'Get Started',
                         style: TextStyle(fontSize: 16, color: Colors.white),

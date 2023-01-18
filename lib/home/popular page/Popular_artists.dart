@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hear_me/home/home_page.dart';
 import 'package:hear_me/home/popular%20page/PopularInfo.dart';
 import 'package:hear_me/model/artists.dart';
 import 'package:hear_me/style/style.dart';
@@ -20,7 +20,7 @@ class _PopularArtistsState extends State<PopularArtists> {
     return Scaffold(
       backgroundColor: Style.bgcolorOfApp,
       appBar: AppBar(
-        actions: [],
+       
         leading: IconButton(
             onPressed: () {
               Navigator.pop(context);

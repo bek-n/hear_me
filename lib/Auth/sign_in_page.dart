@@ -36,13 +36,13 @@ class _SignInPageState extends State<SignInPage> {
             onPressed: (() {
               Navigator.pop(context);
             }),
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back,
               color: Colors.black,
             )),
       ),
       body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -56,7 +56,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
             ),
             43.4.verticalSpace,
-            Text(
+            const Text(
               'Login to Your Account',
               style: TextStyle(fontSize: 32, fontWeight: FontWeight.w700),
             ),
@@ -70,7 +70,7 @@ class _SignInPageState extends State<SignInPage> {
                 },
                 controller: email,
                 keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     filled: true,
                     fillColor: Color(0xffFAFAFA),
                     prefixIcon: Icon(Icons.email),
@@ -106,13 +106,13 @@ class _SignInPageState extends State<SignInPage> {
                             ? Icons.visibility
                             : Icons.visibility_off)),
                     filled: true,
-                    fillColor: Color(0xffFAFAFA),
-                    prefixIcon: Icon(Icons.lock),
+                    fillColor: const Color(0xffFAFAFA),
+                    prefixIcon: const Icon(Icons.lock),
                     hintText: 'Password',
-                    focusedBorder: OutlineInputBorder(
+                    focusedBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xff06C149)),
                         borderRadius: BorderRadius.all(Radius.circular(16))),
-                    enabledBorder: OutlineInputBorder(
+                    enabledBorder: const OutlineInputBorder(
                         borderSide: BorderSide(color: Color(0xffFAFAFA)),
                         borderRadius: BorderRadius.all(Radius.circular(16)))),
               ),
@@ -126,12 +126,12 @@ class _SignInPageState extends State<SignInPage> {
                       borderRadius: BorderRadius.circular(4.0),
                     ),
                     side: MaterialStateBorderSide.resolveWith(
-                      (states) => BorderSide(
+                      (states) => const BorderSide(
                         width: 2.3,
                         color: Color(0xff06C149),
                       ),
                     ),
-                    activeColor: Color(0xff06C149),
+                    activeColor: const Color(0xff06C149),
                     value: this.value,
                     onChanged: ((value) {
                       setState(() {
@@ -157,13 +157,13 @@ class _SignInPageState extends State<SignInPage> {
                   setState(() {});
                 },
                 child: AnimatedContainer(
-                  duration: Duration(milliseconds: 700),
-                  padding: EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+                  duration: const Duration(milliseconds: 700),
+                  padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
                   decoration: BoxDecoration(
                       color: email.text.isEmpty || passw.text.isEmpty
-                          ? Color.fromARGB(255, 138, 234, 172)
-                          : Color(0xff06C149),
-                      borderRadius: BorderRadius.all(Radius.circular(100))),
+                          ? const Color.fromARGB(255, 138, 234, 172)
+                          : const Color(0xff06C149),
+                      borderRadius: const BorderRadius.all(Radius.circular(100))),
                   child: Center(
                     child: Text('Sign up',
                         style: GoogleFonts.urbanist(
@@ -178,7 +178,7 @@ class _SignInPageState extends State<SignInPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 96,
                   child: Divider(
                     color: Color(0xffEEEEEE),
@@ -191,7 +191,7 @@ class _SignInPageState extends State<SignInPage> {
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 16.horizontalSpace,
-                SizedBox(
+                const SizedBox(
                   width: 96,
                   child: Divider(
                     color: Color(0xffEEEEEE),
@@ -205,7 +205,7 @@ class _SignInPageState extends State<SignInPage> {
               child: ListView.builder(
                   itemCount: items.length,
                   scrollDirection: Axis.horizontal,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemBuilder: ((context, index) => Padding(
                         padding: const EdgeInsets.only(
                           top: 20,
@@ -222,9 +222,9 @@ class _SignInPageState extends State<SignInPage> {
                                 width: 88.w,
                                 decoration: BoxDecoration(
                                     borderRadius:
-                                        BorderRadius.all(Radius.circular(16)),
+                                        const BorderRadius.all(Radius.circular(16)),
                                     border:
-                                        Border.all(color: Color(0xffEEEEEE))),
+                                        Border.all(color: const Color(0xffEEEEEE))),
                                 child: Center(
                                   child: Image.asset(
                                     items[index].image,
@@ -243,7 +243,7 @@ class _SignInPageState extends State<SignInPage> {
               padding: const EdgeInsets.only(left: 109),
               child: Row(
                 children: [
-                  Text(
+                  const Text(
                     'Already have an account?  ',
                     style: TextStyle(
                         color: Color(0xff9E9E9E), fontWeight: FontWeight.w400),
@@ -253,7 +253,7 @@ class _SignInPageState extends State<SignInPage> {
                       // Navigator.of(context).push(MaterialPageRoute(
                       //     builder: ((context) => SignUpPage())));
                     },
-                    child: Text(
+                    child: const Text(
                       'Sign up',
                       style: TextStyle(
                           color: Color(0xff06C149),

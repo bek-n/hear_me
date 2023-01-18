@@ -10,7 +10,7 @@ import 'package:hear_me/store/local.dart';
 import 'package:hear_me/style/style.dart';
 import 'package:rolling_switch/rolling_switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shimmer_animation/shimmer_animation.dart';
+
 
 import '../components/shimmer.dart';
 import '../main.dart';
@@ -113,14 +113,14 @@ class _HomePageState extends State<HomePage>
           actions: [
             IconButton(
                 onPressed: (() {}),
-                icon: Icon(
+                icon: const Icon(
                   Icons.search,
                   size: 28,
                   color: Colors.white,
                 )),
             IconButton(
                 onPressed: (() {}),
-                icon: Icon(
+                icon: const Icon(
                   Icons.notifications_active,
                   size: 28,
                   color: Colors.white,
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage>
               Container(
                 height: 50.r,
                 width: 50.r,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     color: Colors.red,
                     shape: BoxShape.circle,
                     image: DecorationImage(
@@ -191,7 +191,7 @@ class _HomePageState extends State<HomePage>
                     SizedBox(
                       height: 170,
                       child: ListView.builder(
-                          padding: EdgeInsets.only(left: 24),
+                          padding: const EdgeInsets.only(left: 24),
                           itemCount: lifOfPlaylists?.images?.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: ((context, index) => Column(
@@ -242,7 +242,7 @@ class _HomePageState extends State<HomePage>
                     SizedBox(
                       height: 190,
                       child: ListView.builder(
-                          padding: EdgeInsets.only(left: 24),
+                          padding: const EdgeInsets.only(left: 24),
                           scrollDirection: Axis.horizontal,
                           itemCount: artistt?.artists?.length,
                           itemBuilder: ((context, index) => Column(
@@ -294,7 +294,7 @@ class _HomePageState extends State<HomePage>
                     SizedBox(
                       height: 170,
                       child: ListView.builder(
-                          padding: EdgeInsets.only(left: 24),
+                          padding: const EdgeInsets.only(left: 24),
                           itemCount: top200songs?.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: ((context, index) => Column(

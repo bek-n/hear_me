@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hear_me/model/playlist.dart';
 import 'package:hear_me/style/style.dart';
 
 class PlaylistInfos extends StatefulWidget {
   final Playlist? infoplay;
-  PlaylistInfos({super.key, required this.infoplay});
+  const PlaylistInfos({super.key, required this.infoplay});
 
   @override
   State<PlaylistInfos> createState() => _PlaylistInfosState();
@@ -27,7 +25,7 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
               Container(
                 height: MediaQuery.of(context).size.height * 0.25,
                 width: double.infinity,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                     gradient: LinearGradient(
                         begin: Alignment.topRight,
                         end: Alignment.bottomLeft,
@@ -40,7 +38,7 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      margin: EdgeInsets.only(left: 15),
+                      margin: const EdgeInsets.only(left: 15),
                       height: 152.h,
                       width: 152.w,
                       decoration: BoxDecoration(
@@ -58,7 +56,7 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
                       children: [
                         Text(
                           '${widget.infoplay?.name}',
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Style.whiteColor,
                               fontSize: 35,
                               fontWeight: FontWeight.bold),
@@ -70,12 +68,12 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
                           softWrap: false,
                           '${widget.infoplay?.description?.substring(58, 120)}',
                           style:
-                              TextStyle(fontSize: 8, color: Style.whiteColor),
+                              const TextStyle(fontSize: 8, color: Style.whiteColor),
                         ),
                         5.verticalSpace,
                         Text(
                           '${widget.infoplay?.tracks?.total} tracks',
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Style.whiteColor,
                               fontSize: 20,
                               fontWeight: FontWeight.bold),
@@ -110,17 +108,17 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
                     style: Theme.of(context).textTheme.headline3,
                   ),
                   20.horizontalSpace,
-                  Text(
+                  const Text(
                     '🕑',
                   )
                 ],
               ),
               10.verticalSpace,
               Row(
-                children: [
-                  Expanded(
+                 children:  [
+                    Expanded(
                       child: Padding(
-                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    padding: EdgeInsets.only(left: 15, right: 15),
                     child: Divider(
                       color: Colors.white,
                     ),
@@ -136,7 +134,7 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
                     itemBuilder: ((context, index) => Row(
                           children: [
                             Container(
-                              margin: EdgeInsets.only(bottom: 16),
+                              margin: const EdgeInsets.only(bottom: 16),
                               height: 80.h,
                               width: MediaQuery.of(context).size.width,
                               // color: Theme.of(context).scaffoldBackgroundColor,
@@ -147,7 +145,7 @@ class _PlaylistInfosState extends State<PlaylistInfos> {
                                   Container(
                                     height: 80.h,
                                     width: 80.w,
-                                    decoration: BoxDecoration(
+                                    decoration: const BoxDecoration(
                                         
                                         color: Colors.amberAccent,
                                         borderRadius: BorderRadius.all(

@@ -15,10 +15,10 @@ class GeneralPage extends StatefulWidget {
 
 class _GeneralPageState extends State<GeneralPage> {
   List<IndexedStackChild> mainPages = [
-    IndexedStackChild(child: HomePage()),
-    IndexedStackChild(child: SearchPage()),
-    IndexedStackChild(child: Placeholder()),
-    IndexedStackChild(child: ProfilePage()),
+    IndexedStackChild(child: const HomePage()),
+    IndexedStackChild(child: const SearchPage()),
+    IndexedStackChild(child: const Placeholder()),
+    IndexedStackChild(child: const ProfilePage()),
   ];
   int currentIndex = 0;
   PageController _pageController = PageController();
@@ -35,7 +35,7 @@ class _GeneralPageState extends State<GeneralPage> {
             scaleCurve: Curves.fastLinearToSlowEaseIn,
             iconSize: 27,
             selectedColor: Style.primaryColor,
-            unSelectedColor: Color(0xff9E9E9E),
+            unSelectedColor: const Color(0xff9E9E9E),
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
             currentIndex: currentIndex,
             items: [
@@ -44,28 +44,28 @@ class _GeneralPageState extends State<GeneralPage> {
                   'Home',
                   style: Theme.of(context).textTheme.headline2,
                 ),
-                icon: Icon(Icons.home),
+                icon: const Icon(Icons.home),
               ),
               CustomNavigationBarItem(
                 title: Text(
                   'Explore',
                   style: Theme.of(context).textTheme.headline2,
                 ),
-                icon: Icon(Icons.explore),
+                icon: const Icon(Icons.explore),
               ),
               CustomNavigationBarItem(
                 title: Text(
                   'Library',
                   style: Theme.of(context).textTheme.headline2,
                 ),
-                icon: Icon(Icons.library_add),
+                icon: const Icon(Icons.library_add),
               ),
               CustomNavigationBarItem(
                 title: Text(
                   'Profile',
                   style: Theme.of(context).textTheme.headline2,
                 ),
-                icon: Icon(Icons.person),
+                icon: const Icon(Icons.person),
               ),
             ],
             onTap: ((value) => setState(() {

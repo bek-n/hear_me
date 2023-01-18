@@ -1,12 +1,10 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:hear_me/Auth/starting_page.dart';
 import 'package:hear_me/home/general_page.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import '../local/local_store.dart';
-import '../model/user_model.dart';
 import 'on_boarding_page.dart';
 
 class SplashScreen extends StatefulWidget {

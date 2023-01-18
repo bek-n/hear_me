@@ -1,11 +1,7 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hear_me/store/local.dart';
 import 'package:hear_me/style/style.dart';
-
-import 'home/on_boarding_page.dart';
 import 'home/splash_screen.dart';
 
 void main() {
@@ -52,7 +48,7 @@ class _MyAppState extends State<MyApp> {
             themeMode: isChangeTheme ? ThemeMode.light : ThemeMode.dark,
             theme: ThemeData(
               
-              inputDecorationTheme: InputDecorationTheme(
+              inputDecorationTheme: const InputDecorationTheme(
                 
                   prefixIconColor: Style.primaryColor,
                   hintStyle: TextStyle(
@@ -71,21 +67,21 @@ class _MyAppState extends State<MyApp> {
                     size: 48,
                     textColor: Style.blackColor,
                   ),
-                  subtitle1: TextStyle(
+                  subtitle1: const TextStyle(
                       fontSize: 32,
                       color: Style.blackColor,
                       fontWeight: FontWeight.w700),
-                  headline5: TextStyle(
+                  headline5: const TextStyle(
                       fontSize: 24,
                       color: Style.blackColor,
                       fontWeight: FontWeight.w700),
-                  headline4: TextStyle(
+                  headline4: const TextStyle(
                       color: Color(0xff9E9E9E),
                       fontSize: 14,
                       fontWeight: FontWeight.w400),
                   headline2: Style.textStyleNormal(
                       size: 16, textColor: Style.blackColor),
-                  headline3: TextStyle(
+                  headline3: const TextStyle(
                       fontSize: 18,
                       color: Style.blackColor,
                       fontWeight: FontWeight.w600)),
@@ -94,7 +90,7 @@ class _MyAppState extends State<MyApp> {
               bottomNavigationBarTheme: BottomNavigationBarThemeData(
                   backgroundColor: Style.bgcolorOfApp.withOpacity(0.85)),
               textTheme: TextTheme(
-                  subtitle1: TextStyle(
+                  subtitle1: const TextStyle(
                       fontSize: 32,
                       color: Style.whiteColor,
                       fontWeight: FontWeight.w700),
@@ -104,15 +100,15 @@ class _MyAppState extends State<MyApp> {
                     size: 16,
                     textColor: Style.whiteColor,
                   ),
-                  headline3: TextStyle(
+                  headline3: const TextStyle(
                       fontSize: 18,
                       color: Style.whiteColor,
                       fontWeight: FontWeight.w600),
-                  headline5: TextStyle(
+                  headline5: const TextStyle(
                       fontSize: 24,
                       color: Style.whiteColor,
                       fontWeight: FontWeight.w700),
-                  headline4: TextStyle(
+                  headline4: const TextStyle(
                       color: Style.whiteColor,
                       fontSize: 14,
                       fontWeight: FontWeight.w400)),

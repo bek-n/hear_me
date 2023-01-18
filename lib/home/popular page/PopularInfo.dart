@@ -1,7 +1,7 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'package:google_fonts/google_fonts.dart';
 import 'package:hear_me/home/popular%20page/popularSeeAll.dart';
 import 'package:hear_me/model/artists.dart';
 import 'package:hear_me/style/style.dart';
@@ -13,7 +13,7 @@ import '../../repository/get_info.dart';
 class Page35 extends StatefulWidget {
   final Artists? info;
 
-  Page35({
+  const Page35({
     Key? key,
     required this.info,
   }) : super(key: key);

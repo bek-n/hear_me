@@ -43,18 +43,18 @@ class _StartPageState extends State<StartPage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: ListView.builder(
-                    padding: EdgeInsets.only(top: 30.25),
+                    padding: const EdgeInsets.only(top: 30.25),
                     itemCount: items.length,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     scrollDirection: Axis.vertical,
                     itemBuilder: ((context, index) => Container(
-                        margin: EdgeInsets.only(bottom: 16),
+                        margin: const EdgeInsets.only(bottom: 16),
                         width: 380.w,
                         height: 60.h,
                         decoration: BoxDecoration(
-                            border: Border.all(color: Color(0xffEEEEEE)),
+                            border: Border.all(color: const Color(0xffEEEEEE)),
                             borderRadius:
-                                BorderRadius.all(Radius.circular(16))),
+                                const BorderRadius.all(Radius.circular(16))),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -76,7 +76,7 @@ class _StartPageState extends State<StartPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(
+                const SizedBox(
                   width: 155,
                   child: Divider(
                     color: Color(0xffEEEEEE),
@@ -89,7 +89,7 @@ class _StartPageState extends State<StartPage> {
                   style: Theme.of(context).textTheme.headline3,
                 ),
                 16.horizontalSpace,
-                SizedBox(
+                const SizedBox(
                   width: 155,
                   child: Divider(
                     color: Color(0xffEEEEEE),
@@ -102,8 +102,8 @@ class _StartPageState extends State<StartPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 18, horizontal: 16),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+                decoration: const BoxDecoration(
                     color: Color(0xff06C149),
                     boxShadow: [
                       BoxShadow(
@@ -112,7 +112,7 @@ class _StartPageState extends State<StartPage> {
                           offset: Offset(4, 0))
                     ],
                     borderRadius: BorderRadius.all(Radius.circular(100))),
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Sign in with password',
                     style: TextStyle(
@@ -128,7 +128,7 @@ class _StartPageState extends State<StartPage> {
               padding: const EdgeInsets.only(left: 109),
               child: Row(
                 children: [
-                  Text(
+                  const Text(
                     'Don’t have an account?  ',
                     style: TextStyle(
                         color: Color(0xff9E9E9E), fontWeight: FontWeight.w400),
@@ -136,9 +136,9 @@ class _StartPageState extends State<StartPage> {
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: ((context) => SignUpPage())));
+                          builder: ((context) => const SignUpPage())));
                     },
-                    child: Text(
+                    child: const Text(
                       'Sign up',
                       style: TextStyle(
                           color: Color(0xff06C149),
