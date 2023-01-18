@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hear_me/components/cachedNetworkImage.dart';
 import 'package:hear_me/model/Search.dart';
 import 'package:hear_me/style/style.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
@@ -93,32 +94,23 @@ class _SearchPageState extends State<SearchPage> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Container(
-                                        width: 120.w,
-                                        height: 130.h,
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(24),
-                                            image: DecorationImage(
-                                                image: NetworkImage(
-                                                    "${snapshot.data?.artists?.items?[index]?.data?.visuals?.avatarImage?.sources?.first?.url}"),
-                                                fit: BoxFit.cover)),
-                                      ),
-                                    ),
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: CustomImageNetwork(
+                                            height: 130,
+                                            width: 130,
+                                            image:
+                                                "${snapshot.data?.artists?.items?[index]?.data?.visuals?.avatarImage?.sources?.first?.url}")),
                                     SizedBox(
                                       width: 200.w,
                                       child: Container(
                                         margin: const EdgeInsets.only(
-                                            left: 30, top: 22),
+                                            left: 30, top: 50),
                                         child: Text(
-                                          "${snapshot.data?.artists?.items?[index]?.data?.profile?.name}",
-                                          overflow: TextOverflow.ellipsis,
-                                          style: GoogleFonts.raleway(
-                                              color: const Color(0xff194B38),
-                                              fontWeight: FontWeight.w700,
-                                              fontSize: 15),
-                                        ),
+                                            "${snapshot.data?.artists?.items?[index]?.data?.profile?.name}",
+                                            overflow: TextOverflow.ellipsis,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .headline3),
                                       ),
                                     ),
                                   ],
