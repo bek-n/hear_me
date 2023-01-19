@@ -65,7 +65,8 @@ class _FillBioState extends State<FillBio> {
                                   offset: Offset(-0, 1),
                                   color: Colors.grey)
                             ],
-                            borderRadius: const BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             color: const Color(0xffFAFAFA),
                             border: Border.all(color: const Color(0xffEBEEF2))),
                         child: Column(
@@ -117,7 +118,8 @@ class _FillBioState extends State<FillBio> {
                                   offset: Offset(-0, 1),
                                   color: Colors.grey)
                             ],
-                            borderRadius: const BorderRadius.all(Radius.circular(20)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(20)),
                             color: const Color(0xffFAFAFA),
                             border: Border.all(color: const Color(0xffEBEEF2))),
                         child: Column(
@@ -217,7 +219,8 @@ class _FillBioState extends State<FillBio> {
                                                       }
                                                     });
                                                   }),
-                                                  child: const Text("Take photo")),
+                                                  child:
+                                                      const Text("Take photo")),
                                               CupertinoButton(
                                                   onPressed: (() async {
                                                     _picker
@@ -245,7 +248,8 @@ class _FillBioState extends State<FillBio> {
                                                       }
                                                     });
                                                   }),
-                                                  child: const Text("From Gallery")),
+                                                  child: const Text(
+                                                      "From Gallery")),
                                               CupertinoButton(
                                                   onPressed: (() async {
                                                     imagePath = '';
@@ -301,6 +305,7 @@ class _FillBioState extends State<FillBio> {
                         padding:
                             const EdgeInsets.only(top: 8, left: 24, right: 24),
                         child: TextFormField(
+                          style: TextStyle(fontSize: 18, color: Colors.black),
                           onChanged: (value) {
                             isFullNameFilled = false;
                             setState(() {});
@@ -385,6 +390,7 @@ class _FillBioState extends State<FillBio> {
                         padding:
                             const EdgeInsets.only(top: 8, left: 24, right: 24),
                         child: TextFormField(
+                          style: TextStyle(fontSize: 18, color: Colors.black),
                           onChanged: (value) {
                             isNickFilled = false;
                             setState(() {});
@@ -482,7 +488,8 @@ class _FillBioState extends State<FillBio> {
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 400),
-                    padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 18, horizontal: 16),
                     decoration: BoxDecoration(
                       color: imagePath.isEmpty ||
                               fullname.text.isEmpty ||

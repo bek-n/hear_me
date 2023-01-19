@@ -67,6 +67,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: TextFormField(
+                 style: TextStyle(fontSize: 18,color: Colors.black),
                 onChanged: (value) {
                   isEmailEmpty = false;
                   setState(() {});
@@ -90,6 +91,7 @@ class _SignUpPageState extends State<SignUpPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: TextFormField(
+                style: TextStyle(fontSize: 18,color: Colors.black),
                 onChanged: (value) {
                   isPasswordEmpty = false;
                   setState(() {});
@@ -99,6 +101,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 obscuringCharacter: '*',
                 keyboardType: TextInputType.name,
                 decoration: InputDecoration(
+                  
                     suffixIcon: IconButton(
                         onPressed: (() {
                           setState(() {
