@@ -1,12 +1,13 @@
+import 'package:day_night_switcher/day_night_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hear_me/style/style.dart';
-import 'package:rolling_switch/rolling_switch.dart';
+
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../../main.dart';
 import '../../model/profile.dart';
 import '../../store/local.dart';
+import '../main.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -38,6 +39,21 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       key: key,
       appBar: AppBar(
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 25),
+            child: DayNightSwitcherIcon(
+              dayBackgroundColor: Style.whiteColor,
+              isDarkModeEnabled: !isChangedTheme,
+              onStateChanged: (isDarkModeEnabled) {
+                isChangedTheme = !isChangedTheme;
+                MyApp.of(context)!.change();
+                LocalStorrre.setTheme(isChangedTheme);
+                setState(() {});
+              },
+            ),
+          ),
+        ],
         title: Text("Profile"),
       ),
       body: SingleChildScrollView(

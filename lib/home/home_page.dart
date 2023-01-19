@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage>
     SharedPreferences _local = await SharedPreferences.getInstance();
     name = _local.getString('nickname') ?? '';
     isChangedTheme = await LocalStorrre.getTheme();
+    
     await getAllPlay();
     await getAllArtists();
     await getTop();
@@ -89,9 +90,8 @@ class _HomePageState extends State<HomePage>
         appBar: AppBar(
           actions: [
             IconButton(
-                onPressed: (() {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (_) => SearchPage()));
+                onPressed: (() {Navigator.of(context).push(MaterialPageRoute(builder: (_) => SearchPage()));
+
                 }),
                 icon: Icon(
                   Icons.search,
@@ -111,7 +111,7 @@ class _HomePageState extends State<HomePage>
               GestureDetector(
                 onTap: () {
                   Navigator.of(context).push(
-                      MaterialPageRoute(builder: ((context) => ProfilePage())));
+                      MaterialPageRoute(builder: ((context) => ProfilePage())));  
                 },
                 child: Container(
                   height: 50.r,

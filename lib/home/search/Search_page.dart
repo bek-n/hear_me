@@ -194,8 +194,8 @@ class _SearchPageState extends State<SearchPage> {
                                                 padding:
                                                     const EdgeInsets.all(8.0),
                                                 child: CustomImageNetwork(
-                                                    height: 130,
-                                                    width: 130,
+                                                    height: 130.h,
+                                                    width: 130.w,
                                                     image:
                                                         "${snapshot.data?.artists?.items?[index]?.data?.visuals?.avatarImage?.sources?.first?.url}")),
                                             SizedBox(
