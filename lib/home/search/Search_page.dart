@@ -6,6 +6,8 @@ import 'package:hear_me/components/timerForSearch.dart';
 import 'package:hear_me/model/Search.dart';
 import 'package:hear_me/style/style.dart';
 import 'package:searchbar_animation/searchbar_animation.dart';
+import '../../store/local.dart';
+import '../../store/local_store.dart';
 import '../../repository/get_info.dart';
 import 'SearchInfo.dart';
 
@@ -21,12 +23,15 @@ class _SearchPageState extends State<SearchPage> {
 
   GlobalKey<ScaffoldState> key = GlobalKey();
   final _delayed = Delayed(milliseconds: 700);
+  List<String> listOfSearch = [];
   String change = "";
   Search? s;
 
   @override
   void initState() {
     getInfo();
+    getSearchHistory();
+    print(listOfSearch);
 
     super.initState();
   }
@@ -35,9 +40,13 @@ class _SearchPageState extends State<SearchPage> {
     await getSearch();
   }
 
-  Future<void> getSearch() async {
+  getSearch() async {
     s = await GetInfo.getSearch(text: change);
     print(s);
+  }
+
+  getSearchHistory() async {
+    listOfSearch = await LocalStorrre.getSearch();
   }
 
   @override
@@ -47,7 +56,7 @@ class _SearchPageState extends State<SearchPage> {
       body: Column(
         children: [
           100.verticalSpace,
-          Row(
+          Column(
             children: [
               25.verticalSpace,
               SearchBarAnimation(
@@ -57,18 +66,32 @@ class _SearchPageState extends State<SearchPage> {
                 searchBoxColour: Style.primaryColor,
                 enteredTextStyle:
                     const TextStyle(fontSize: 15, color: Style.blackColor),
-                searchBoxWidth: 380,
+                searchBoxWidth: 350.w,
                 enableKeyboardFocus: true,
                 isOriginalAnimation: false,
                 buttonBorderColour: Colors.black45,
                 onChanged: (value) {
-                  _delayed.run(() {
+                  _delayed.run(() async {
                     change = value;
+                    s = await GetInfo.getSearch(text: textController.text);
+                    LocalStorrre.setSearch(textController.text);
+
                     setState(() {});
                   });
                 },
                 textEditingController: textController,
-                trailingWidget: const Icon(Icons.search),
+                trailingWidget: change.isEmpty
+                    ? SizedBox.shrink()
+                    : InkWell(
+                        child: Icon(
+                          Icons.close,
+                          color: Style.blackColor,
+                        ),
+                        onTap: () {
+                          change = textController.text = "";
+                          setState(() {});
+                        },
+                      ),
                 secondaryButtonWidget: const Icon(
                   Icons.arrow_back_ios,
                   color: Style.blackColor,
@@ -134,11 +157,14 @@ class _SearchPageState extends State<SearchPage> {
                                     child: GestureDetector(
                                       onTap: () {
                                         Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                                builder: ((context) =>
-                                                    SearchArtistInfo(
-                                                      se: s,
-                                                    ))));
+                                          MaterialPageRoute(
+                                            builder: ((context) =>
+                                                SearchArtistInfo(
+                                                  se: snapshot.data,
+                                                  indx: index,
+                                                )),
+                                          ),
+                                        );
                                       },
                                       child: Container(
                                         height: 120,

@@ -6,7 +6,8 @@ import '../../style/style.dart';
 
 class SearchArtistInfo extends StatefulWidget {
   final Search? se;
-  const SearchArtistInfo({super.key, required this.se});
+  final int indx;
+  const SearchArtistInfo({super.key, required this.se, required this.indx});
 
   @override
   State<SearchArtistInfo> createState() => _SearchArtistInfoState();
@@ -14,6 +15,12 @@ class SearchArtistInfo extends StatefulWidget {
 
 class _SearchArtistInfoState extends State<SearchArtistInfo> {
   bool isLoading = true;
+
+  @override
+  void initState() {
+    print(widget.se);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +58,7 @@ class _SearchArtistInfoState extends State<SearchArtistInfo> {
                           color: Colors.white,
                           image: DecorationImage(
                               image: NetworkImage(
-                                  '${widget.se?.artists?.items?[index]?.data?.visuals?.avatarImage?.sources?.first?.url}'),
+                                  '${widget.se?.artists?.items?[widget.indx]?.data?.visuals?.avatarImage?.sources?.first?.url}'),
                               fit: BoxFit.cover),
                           shape: BoxShape.circle),
                     ),
@@ -60,7 +67,7 @@ class _SearchArtistInfoState extends State<SearchArtistInfo> {
               ),
             ),
             Text(
-              '${widget.se?.albums?.items?[0]?.data?.name}',
+              '${widget.se?.albums?.items?[widget.indx]?.data?.artists?.items?[0]?.profile?.name}',
               style: Theme.of(context).textTheme.subtitle1,
             ),
             const SizedBox(
@@ -164,7 +171,7 @@ class _SearchArtistInfoState extends State<SearchArtistInfo> {
                   builder:
                       (BuildContext context, AsyncSnapshot<Search?> snapshot) {
                     return ListView.builder(
-                        itemCount: snapshot.data?.albums?.items?.length,
+                        itemCount: widget.se?.albums?.items?.length,
                         itemBuilder: (BuildContext context, int index) {
                           return Container(
                             margin: const EdgeInsets.only(bottom: 10),
@@ -185,7 +192,7 @@ class _SearchArtistInfoState extends State<SearchArtistInfo> {
                                     color: Colors.white,
                                     image: DecorationImage(
                                         image: NetworkImage(
-                                          '${snapshot.data?.albums?.items?[0]?.data?.coverArt?.sources?[0]?.url}',
+                                          '${widget.se?.albums?.items?[index]?.data?.coverArt?.sources?[0]?.url}',
                                         ),
                                         fit: BoxFit.cover),
                                     borderRadius: const BorderRadius.all(
@@ -193,12 +200,15 @@ class _SearchArtistInfoState extends State<SearchArtistInfo> {
                                   ),
                                 ),
                                 15.horizontalSpace,
-                                Text(
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                  softWrap: false,
-                                  '${snapshot.data?.albums?.items?[0]?.data?.name}',
-                                  style: Theme.of(context).textTheme.headline3,
+                                Expanded(
+                                  child: Text(
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                    softWrap: false,
+                                    '${widget.se?.albums?.items?[index]?.data?.name}',
+                                    style:
+                                        Theme.of(context).textTheme.headline3,
+                                  ),
                                 ),
                                 const Spacer(),
                                 const Icon(
