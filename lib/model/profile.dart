@@ -91,15 +91,4 @@ List<ProfileModel> listOfProfile = [
       color: Style.primaryColor,
     ),
   ),
-  ProfileModel(
-    icon1: const Icon(
-      Icons.visibility,
-      color: Style.primaryColor,
-    ),
-    text: 'Dark Mode',
-    icon2: const Icon(
-      Icons.arrow_forward_ios,
-      color: Style.primaryColor,
-    ),
-  ),
 ];

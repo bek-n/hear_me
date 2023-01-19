@@ -16,7 +16,7 @@ abstract class GetInfo {
           "https://spotify81.p.rapidapi.com/playlist?id=37i9dQZF1DX4Wsb4d7NKfP");
 
       final res = await http.get(url, headers: {
-        'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+        'X-RapidAPI-Key': '8f7674f335mshc466839187b5405p1d3ae4jsn57c9d401092c',
         'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
       });
       print(res.body);
@@ -35,7 +35,7 @@ abstract class GetInfo {
           "https://spotify81.p.rapidapi.com/artists?ids=2w9zwq3AktTeYYMuhMjju8");
 
       final res = await http.get(url, headers: {
-        'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+        'X-RapidAPI-Key': '8f7674f335mshc466839187b5405p1d3ae4jsn57c9d401092c',
         'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
       });
       print(res.body);
@@ -53,7 +53,7 @@ abstract class GetInfo {
       final url = Uri.parse("https://spotify81.p.rapidapi.com/top_200_tracks");
 
       final res = await http.get(url, headers: {
-        'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+        'X-RapidAPI-Key': '8f7674f335mshc466839187b5405p1d3ae4jsn57c9d401092c',
         'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
       });
       print(res.body);
@@ -72,7 +72,7 @@ abstract class GetInfo {
           "https://spotify81.p.rapidapi.com/artist_singles?id=2w9zwq3AktTeYYMuhMjju8");
 
       final res = await http.get(url, headers: {
-        'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+        'X-RapidAPI-Key': '8f7674f335mshc466839187b5405p1d3ae4jsn57c9d401092c',
         'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
       });
       print(res.body);
@@ -89,7 +89,7 @@ abstract class GetInfo {
     try {
       final url = Uri.parse('https://spotify81.p.rapidapi.com/search?q=$text&type=multi&offset=0&limit=10&numberOfTopResults=5');
       final res = await http.get(url,  headers: {
-        'X-RapidAPI-Key': '91d31d4cb8mshdd2eaed2c3bf3b5p1bc6d3jsn9e4eb668d330',
+        'X-RapidAPI-Key': '8f7674f335mshc466839187b5405p1d3ae4jsn57c9d401092c',
         'X-RapidAPI-Host': 'spotify81.p.rapidapi.com'
       });
 

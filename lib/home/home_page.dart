@@ -3,14 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hear_me/components/cachedNetworkImage.dart';
+import 'package:hear_me/home/Profile_page%20(1).dart';
 import 'package:hear_me/home/playlist/playList.dart';
+import 'package:hear_me/home/search/Search_page.dart';
 import 'package:hear_me/home/top200/200info.dart';
+import 'package:hear_me/model/Search.dart';
 import 'package:hear_me/model/artists.dart';
 import 'package:hear_me/store/local.dart';
 import 'package:hear_me/style/style.dart';
 import 'package:rolling_switch/rolling_switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 import '../components/shimmer.dart';
 import '../main.dart';
@@ -84,43 +86,21 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: Drawer(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              RollingSwitch.icon(
-                initialState: !isChangedTheme,
-                onChanged: (s) {
-                  isChangedTheme = !isChangedTheme;
-                  MyApp.of(context)!.change();
-                  LocalStorrre.setTheme(isChangedTheme);
-                  setState(() {});
-                },
-                rollingInfoRight: const RollingIconInfo(
-                  backgroundColor: Style.primaryColor,
-                  icon: Icons.light_mode,
-                ),
-                rollingInfoLeft: const RollingIconInfo(
-                  icon: Icons.dark_mode,
-                  backgroundColor: Style.darkModeColor,
-                ),
-              ),
-            ],
-          ),
-        ),
         appBar: AppBar(
           actions: [
             IconButton(
-                onPressed: (() {}),
-                icon: const Icon(
+                onPressed: (() {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (_) => SearchPage()));
+                }),
+                icon: Icon(
                   Icons.search,
                   size: 28,
                   color: Colors.white,
                 )),
             IconButton(
                 onPressed: (() {}),
-                icon: const Icon(
+                icon: Icon(
                   Icons.notifications_active,
                   size: 28,
                   color: Colors.white,
@@ -128,16 +108,22 @@ class _HomePageState extends State<HomePage>
           ],
           title: Row(
             children: [
-              Container(
-                height: 50.r,
-                width: 50.r,
-                decoration: const BoxDecoration(
-                    color: Colors.red,
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: NetworkImage(
-                            'https://source.unsplash.com/random/1'),
-                        fit: BoxFit.cover)),
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: ((context) => ProfilePage())));
+                },
+                child: Container(
+                  height: 50.r,
+                  width: 50.r,
+                  decoration: BoxDecoration(
+                      color: Colors.red,
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: NetworkImage(
+                              'https://source.unsplash.com/random/1'),
+                          fit: BoxFit.cover)),
+                ),
               ),
               10.horizontalSpace,
               Expanded(
@@ -191,7 +177,7 @@ class _HomePageState extends State<HomePage>
                     SizedBox(
                       height: 170,
                       child: ListView.builder(
-                          padding: const EdgeInsets.only(left: 24),
+                          padding: EdgeInsets.only(left: 24),
                           itemCount: lifOfPlaylists?.images?.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: ((context, index) => Column(
@@ -242,7 +228,7 @@ class _HomePageState extends State<HomePage>
                     SizedBox(
                       height: 190,
                       child: ListView.builder(
-                          padding: const EdgeInsets.only(left: 24),
+                          padding: EdgeInsets.only(left: 24),
                           scrollDirection: Axis.horizontal,
                           itemCount: artistt?.artists?.length,
                           itemBuilder: ((context, index) => Column(
@@ -294,7 +280,7 @@ class _HomePageState extends State<HomePage>
                     SizedBox(
                       height: 170,
                       child: ListView.builder(
-                          padding: const EdgeInsets.only(left: 24),
+                          padding: EdgeInsets.only(left: 24),
                           itemCount: top200songs?.length,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: ((context, index) => Column(

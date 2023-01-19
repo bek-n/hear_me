@@ -152,28 +152,30 @@ class _SearchPageState extends State<SearchPage> {
                             itemBuilder: (context, index) {
                               return Column(
                                 children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.of(context).push(
-                                          MaterialPageRoute(
-                                            builder: ((context) =>
-                                                SearchArtistInfo(
-                                                  se: snapshot.data,
-                                                  indx: index,
-                                                )),
-                                          ),
-                                        );
-                                      },
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                          builder: ((context) =>
+                                              SearchArtistInfo(
+                                                se: snapshot.data,
+                                                indx: index,
+                                              )),
+                                        ),
+                                      );
+                                    },
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 24),
                                       child: Container(
                                         height: 120,
                                         width: double.infinity,
                                         decoration: const BoxDecoration(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(24))),
-                                        margin: const EdgeInsets.only(
-                                            left: 10, right: 12),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(24)),
+                                        ),
+                                        margin:
+                                            const EdgeInsets.only(bottom: 12),
                                         child: Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.start,

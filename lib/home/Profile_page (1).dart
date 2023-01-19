@@ -1,11 +1,12 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hear_me/style/style.dart';
+import 'package:rolling_switch/rolling_switch.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../model/profile.dart';
-import '../store/local.dart';
+import '../../main.dart';
+import '../../model/profile.dart';
+import '../../store/local.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -35,6 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: key,
       appBar: AppBar(
         title: Text("Profile"),
       ),
@@ -74,7 +76,6 @@ class _ProfilePageState extends State<ProfilePage> {
                   itemCount: 4,
                   itemBuilder: (context, index) {
                     return Container(
-                      margin: EdgeInsets.only(right: 15),
                       width: 380.w,
                       height: 180.h,
                       decoration: BoxDecoration(
@@ -86,7 +87,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   }),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height,
+              height: MediaQuery.of(context).size.height / 2,
               child: ListView.builder(
                   physics: NeverScrollableScrollPhysics(),
                   itemCount: listOfProfile.length,
@@ -112,7 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     );
                   }),
-            )
+            ),
           ],
         ),
       ),
