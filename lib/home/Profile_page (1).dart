@@ -59,6 +59,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            20.verticalSpace,
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24),
               child: Row(
@@ -92,6 +93,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   itemCount: 4,
                   itemBuilder: (context, index) {
                     return Container(
+                      margin: EdgeInsets.only(right: 5),
                       width: 380.w,
                       height: 180.h,
                       decoration: BoxDecoration(
